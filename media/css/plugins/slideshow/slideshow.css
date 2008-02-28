@@ -1,0 +1,18 @@
+/* -----------------------------------------------------------------------
+
+   Slideshow CSS
+   http://interface.eyecon.ro/docs/slideshow
+   
+----------------------------------------------------------------------- */
+
+#slideshow1 {width:502px; height:403px; border: 1px solid #ccc; padding: 10px; background-color: #fff; margin: 10px}
+#slideshow1 img {margin:0; border:none; padding:0;}
+.pagelinks a {font-weight: bold;}
+.slideCaption{background-color: #FFFFCC;padding: 4px; text-align: center; font-weight: bold; }
+.pagelinks a.activeSlide {color: #f90;}
+.slideshowLinks {text-align:right;}
+
+/* this is for IE so the prev/next links can be hovered*/
+.nextSlide,.prevSlide { background-image: url(../../imgs/spacer.gif); }
+.nextSlide:hover { background: url(../../../imgs/next.gif) right center no-repeat;}
+.prevSlide:hover { background:url(../../../imgs/previous.gif) left center no-repeat; }

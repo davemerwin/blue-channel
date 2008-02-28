@@ -1,0 +1,18 @@
+change the secret key setting for an include to all for multiple deployments on servers
+
+need to figure out to do a couple of things with parents and children
+1. Need to find root
+2. Need to build a tree based on relationships
+3. Need to find siblings
+4. Need to return the abs_url for this slug
+
+Need to know how to tie to views
+
+how will I handle the difference between running a blog post and a normal page
+
+Need to figure out ow site maps works with the URLS
+
+Do I want categories, and if yes, do they get there own app like tagging or do they get incorporated into a page? they will no exist outside a page.
+
+Remove Template Name
+Need to be able to do thumbnails

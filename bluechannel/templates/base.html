@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
+
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>{% block title %}{% endblock %}</title>
+	<meta name="generator" content="TextMate http://macromates.com/">
+	<meta name="author" content="Dave Merwin">
+	<!-- Date: 2007-12-12 -->
+	<!-- Framework CSS -->
+   <link rel="stylesheet" href="css/screen.css" type="text/css" media="screen, projection">
+<link rel="stylesheet" href="css/site.css" type="text/css" media="screen, projection">
+<link rel="stylesheet" href="css/plugins/link-icons/link-icons.css" type="text/css" media="screen, projection">
+   <link rel="stylesheet" href="css/print.css" type="text/css" media="print">	
+   <!--[if IE]><link rel="stylesheet" href="css/ie.css" type="text/css" media="screen, projection"><![endif]-->
+	
+	<script type="text/javascript" src="js/jquery-1.2.1.js"></script>
+	<script type="text/javascript" src="js/site.settings.js"></script>
+</head>
+<body class="reset">
+	<p id="content-skip" class="mir"><a href="#content" title="Skip To Content" class="mir">Skip To Content</a></p>
+	<div id="wrap" class="container">
+		<div id="header" class="clearfix">
+			<h2>HTML 4 Strict: Starter Kit</h2>
+			<h3>This is the byline</h3>
+			<ul id="header-nav" class="reset span-24 clearfix">
+				<li><a href="" title="" class="active">Home</a></li>
+				<li><a href="" title="" class="">About</a></li>
+				<li><a href="" title="" class="">The Site's</a></li>
+				<li><a href="" title="" class="">Main</a></li>
+				<li><a href="" title="" class="">Navigation</a></li>
+				<li><a href="" title="" class="">System</a></li>
+			</ul>
+			<div id="search-block" class="span-7">
+				<form action="index.html" method="get" accept-charset="utf-8">
+					<div><input type="text" name="search" value="" id="search"></div>
+					<div><input type="submit" name="submit_search" value="Search" id="submit_search"></div>
+				</form>
+			</div>
+		</div>
+		{% block content %}{% endblock %}
+		<div id="footer" class="clear">
+			<ul id="footer-nav">
+				<li><a href="" title="">Home</a></li>
+				<li><a href="" title="">About</a></li>
+				<li><a href="" title="">The Site's</a></li>
+				<li><a href="" title="">Main</a></li>
+				<li><a href="" title="">Navigation</a></li>
+				<li><a href="" title="">System</a></li>
+			</ul>
+		</div>
+	</div>
+</body>
+</html>
