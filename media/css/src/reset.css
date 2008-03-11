@@ -3,9 +3,6 @@
    reset.css
    * Resets default browser CSS.
    
-   Based on work by Eric Meyer:
-   * meyerweb.com/eric/thoughts/2007/05/01/reset-reloaded/
-   
 -------------------------------------------------------------- */
 
 html, body, div, span, object, iframe,
@@ -26,8 +23,6 @@ table, caption, tbody, tfoot, thead, tr, th, td {
 
 body { 
   line-height: 1.5; 
-  background: #fff; 
-  margin:1.5em 0; 
 }
 
 /* Tables still need 'cellspacing="0"' in the markup. */
