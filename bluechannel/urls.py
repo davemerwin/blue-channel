@@ -1,5 +1,7 @@
 from django.conf.urls.defaults import *
-from django.conf import settings
+from django.views.generic.simple import direct_to_template, redirect_to
+from bluechannel.settings import PROJECT_PATH, DEBUG
+import os
 
 urlpatterns = patterns('',
     # Example:
@@ -14,12 +16,16 @@ urlpatterns = patterns('',
     # Page Detail
     (r'^(?P<slug>[-\w]+)/$', 'bluechannel.page.views.published_page'),
     
+    #for homepage - testing
+    (r'^$', direct_to_template, {'template': 'homepage.html'}),
+    
     # Creates Site Maps
     # (r'^sitemap.xml$', 'django.contrib.sitemaps.views.sitemap', {'sitemaps': sitemaps})
 )
 
 # For Static Content Locally - Do Not Use In Production!
-if settings.DEBUG:
-    urlpatterns += patterns('',
-        (r'^media/(?P<path>.*)$', 'django.views.static.serve', {'document_root': '/Users/dave/sandbox/bluechannel/media'}),
+if DEBUG:
+    urlpatterns += patterns('', 
+        (r'^media/(.*)$', 'django.views.static.serve', {'document_root': '%s/../media' % (PROJECT_PATH)})
     )
+
