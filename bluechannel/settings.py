@@ -80,12 +80,26 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 )
 
 INSTALLED_APPS = (
-    'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.sites',
-    '',
+    'django.contrib.admin',
+    'django.contrib.comments',
+    'django.contrib.formtools',
+    'django.contrib.humanize',
+    'django.contrib.markup',
+    'django.contrib.redirects',
+    'django.contrib.sitemaps',
+    'django.contrib.syndication',
+    'bluechannel.media',
+    'bluechannel.profiles',
+    'bluechannel.structure',
+    'bluechannel.page',
+    'voting',
+    'tagging',
+    'template_utils',
+    'comment_utils',
 )
 
 # For local development setting overrides
