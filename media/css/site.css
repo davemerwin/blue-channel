@@ -1,17 +1,10 @@
 /* -----------------------------------------------------------------------
 
-   Staterkit CSS V.02
-   http://code.google.com/p/starterkit/
+   Icarus
    
    * Copyright (c) Dave Merwin 2007 - 2008. MIT Liscense
    
 ----------------------------------------------------------------------- */
-
-/* =FORDEV
------------------------------------------------------------------------ */
-#demo-nav {background:black; width:100%; list-style:none; padding:5px 0 5px 5px; color:#fff;}
-#demo-nav li {display:inline; margin:0 10px;}
-#demo-nav a {color:orange;}
 
 /* =GENERAL
 ----------------------------------------------------------------------- */
@@ -21,12 +14,7 @@
 /*\*/html>body .mir { letter-spacing : normal; text-indent : -999em; overflow : hidden;}
 /* End of hack */
 
-/* =FOR DEV NAV
------------------------------------------------------------------------ */
-#demo-nav {background:#000; list-style:none;}
-#demo-nav li {display:inline; margin:0 20px; line-height:36px; height:36px;}
-#demo-nav a, #demo-nav a:visited {color:#FD9B00; text-decoration:none;}
-#demo-nav a:hover, #demo-nav a:active {color:#fff;}
+p.mir {line-height:0;}
 
 /* =LAYOUT
 ----------------------------------------------------------------------- */
