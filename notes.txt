@@ -1,0 +1,1 @@
+a slug needs to know where it is and what section it belongs to. It needs to know the section and the page parents as well as children.
