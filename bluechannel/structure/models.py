@@ -14,6 +14,7 @@ class Section(models.Model):
     parent = models.ForeignKey('self', blank=True, null=True, related_name='child')
     section_type = models.ForeignKey(Type)
     slug = models.SlugField(prepopulate_from=("name",))
+    in_nav = models.BooleanField(default=True)
     order = models.IntegerField(blank=True, null=True)
     
     class Meta:
