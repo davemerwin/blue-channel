@@ -1,18 +1,10 @@
 from django.db import models
 
 # Create your models here.
-class Type(models.Model):
-    name = models.CharField(blank=True, max_length=100)
-    description = models.TextField(blank=True)
-    
-    class Admin:
-        pass
-
 class Section(models.Model):
     name = models.CharField(blank=True, max_length=100)
     description = models.TextField(blank=True)
     parent = models.ForeignKey('self', blank=True, null=True, related_name='child')
-    section_type = models.ForeignKey(Type)
     slug = models.SlugField(prepopulate_from=("name",))
     order = models.IntegerField(blank=True, null=True)
     
@@ -44,6 +36,7 @@ class Section(models.Model):
     class Admin:
         save_on_top = True
         search_fields = ['name', 'description',]
+        list_display = ['name', 'parent', 'description']
         pass
         
 class Template(models.Model):

@@ -29,6 +29,10 @@ class Type(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     modified = models.DateTimeField(auto_now=True)
     
+    class Meta:
+        verbose_name = ('Type')
+        verbose_name_plural = ('Type')
+    
     def __str__(self):
         return self.name
     
@@ -38,7 +42,7 @@ class Type(models.Model):
 class Page(models.Model):
     title = models.CharField(max_length=200)
     main_content = models.ForeignKey(Content)
-    supplimental_content = models.ManyToManyField(Content, blank=True)
+    supplimental_content = models.ManyToManyField(Content, blank=True, related_name="supplimental_content")
     summary = models.TextField(blank=True)
     template = models.ForeignKey(Template, blank=True, null=True)
     hilight_content_1 = models.ForeignKey(Content, blank=True, null=True, related_name='hilight_page_content_1', help_text="You can add content like callouts, sidebars and more.")
