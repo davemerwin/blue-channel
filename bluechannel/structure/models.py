@@ -6,6 +6,7 @@ class Section(models.Model):
     description = models.TextField(blank=True)
     parent = models.ForeignKey('self', blank=True, null=True, related_name='child')
     slug = models.SlugField(prepopulate_from=("name",))
+    in_nav = models.BooleanField(default=True)
     order = models.IntegerField(blank=True, null=True)
     
     class Meta:
