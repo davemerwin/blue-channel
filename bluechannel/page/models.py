@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import *
 from bluechannel.media.models import *
 from bluechannel.structure.models import *
+from bluechannel.layout.models import *
 import tagging
 import datetime
 
