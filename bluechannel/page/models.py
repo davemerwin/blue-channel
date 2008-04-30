@@ -16,7 +16,7 @@ class Content(models.Model):
     
     def __str__(self):
         return self.name
-    
+        
     class Meta:
         verbose_name = ('Content')
         verbose_name_plural = ('Content')
@@ -95,7 +95,7 @@ class Page(models.Model):
         search_fields = ['title', 'content', 'author']
         fields = (
 			('Content', {'fields': ('title', 'main_content', 'summary', 'status', 'template', 'author', 'section', 'section_home', 'page_type', 'slug', 'similar_pages', 'enable_comments', 'order')}),
-			('Additional Content', {'fields': ('supplimental_content_1', 'supplimental_content_2', 'supplimental_content_3', 'supplimental_content_4')}),
+			#('Additional Content', {'fields': ('supplimental_content_1', 'supplimental_content_2', 'supplimental_content_3', 'supplimental_content_4')}),
 			('Media', {'fields': ('media_1', 'media_2', 'media_3', 'media_4', 'media_5', 'media_6')}),
 			)
         pass
