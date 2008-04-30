@@ -31,8 +31,9 @@ class Type(models.Model):
 class Media(models.Model):
     name = models.CharField(max_length=250)
     description = models.TextField(blank=True)
-    media_type = models.ForeignKey(Type)
-    media_file = models.FileField(upload_to='%Y/%m/%d/', max_length=200)
+    media_type = models.ForeignKey(Type, blank=True)
+    media_file = models.FileField(upload_to='%Y/%m/%d/', max_length=200, blank=True)
+    media_embed = models.TextField(blank=True, help_text="Place your EMBED code here from YouTube, Flickr or others.")
     list_display = models.CharField(max_length=4, choices=FILE_LIST_DISPLAY)
     alt_text = models.CharField(blank=True, max_length=100)
     title_text = models.CharField(blank=True, max_length=100)
