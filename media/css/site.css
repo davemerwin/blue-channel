@@ -1,67 +1,24 @@
-/* -----------------------------------------------------------------------
+/*
+    Site.css Base CSS for Blue Channel Projects
+    Dave Merwin
+    
+    Thanks to Nathan Smith for 960 Grid.
 
-   Staterkit CSS V.02
-   http://code.google.com/p/starterkit/
-   
-   * Copyright (c) Dave Merwin 2007 - 2008. MIT Liscense
-   
------------------------------------------------------------------------ */
+*/
 
-/* =FORDEV
------------------------------------------------------------------------ */
-#demo-nav {background:black; width:100%; list-style:none; padding:5px 0 5px 5px; color:#fff;}
-#demo-nav li {display:inline; margin:0 10px;}
-#demo-nav a {color:orange;}
+/* Get the basics */
+@import "960.css";
+@import "text.css";
+@import "reset.css";
 
 /* =GENERAL
------------------------------------------------------------------------ */
-.reset {margin:0; padding:0;}
-.mir { letter-spacing : -1000em; }
-/* Just for Opera, but hide from MacIE */
-/*\*/html>body .mir { letter-spacing : normal; text-indent : -999em; overflow : hidden;}
-/* End of hack */
-
-/* =FOR DEV NAV
------------------------------------------------------------------------ */
-#demo-nav {background:#000; list-style:none;}
-#demo-nav li {display:inline; margin:0 20px; line-height:36px; height:36px;}
-#demo-nav a, #demo-nav a:visited {color:#FD9B00; text-decoration:none;}
-#demo-nav a:hover, #demo-nav a:active {color:#fff;}
+--------------------------------------------------------------------------------*/
 
 /* =LAYOUT
------------------------------------------------------------------------ */
-#header {position:relative; margin:0 0 18px 0;}
+--------------------------------------------------------------------------------*/
 
-/*Content*/
-#cont-col2 {padding:40px 40px 30px; background:#ccc;}
-.sidebar-note {margin:18px 0 10px 0;}
-#cont-col1 img {padding:5px; border:1px solid #ccc; background:#efefef;}
-.featured-image {margin:18px auto; display:block;}
-
-/* Footer */
-#footer {border-top:1px dotted #ccc; padding:32px 0 0 0; margin:32px 0 0 0;}
-#footer-nav {width:100%; text-align:center; list-style:none;}
-#footer-nav li {display:inline; margin:0 10px 0;}
-
-/* =NAV
------------------------------------------------------------------------ */
-#header-nav {list-style:none; background:#ccc;}
-#header-nav li {width:100px; height:32px; line-height:32px; float:left; background:#bbb;}
-#header-nav li a.current-section {background:#000; color:#fff;}
-#header-nav li a {width:100px; height:32px; display:block; text-align:center; line-height:32px; background:#efefef; text-decoration:none; font-weight:bold;}
-#header-nav li a:hover {background:transparent;}
-
-#breadcrumb {width:100%; list-style:none;}
-#breadcrumb li {display:inline; margin:0 10px 0 0;}
-
-/* =TYPOGROPHY
------------------------------------------------------------------------ */
-.decrease {font-size:90%;}
+/* =TYPOGRAPHY
+--------------------------------------------------------------------------------*/
 
 /* =FORMS
------------------------------------------------------------------------ */
-#search-block {position:absolute; top:0; right:0; text-align:right;}
-#search-block div, #email-signup div {display:inline;}
-#submit_search {margin:0 0 0 10px;}
-
-#email-signup #sign_up {margin:0 0 9px 0; width:100%;}
+--------------------------------------------------------------------------------*/

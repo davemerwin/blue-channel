@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import *
 from bluechannel.media.models import *
 from bluechannel.structure.models import *
+from bluechannel.layout.models import *
 import tagging
 import datetime
 
@@ -15,7 +16,7 @@ class Content(models.Model):
     
     def __str__(self):
         return self.name
-    
+        
     class Meta:
         verbose_name = ('Content')
         verbose_name_plural = ('Content')
@@ -29,6 +30,10 @@ class Type(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     modified = models.DateTimeField(auto_now=True)
     
+    class Meta:
+        verbose_name = ('Type')
+        verbose_name_plural = ('Type')
+    
     def __str__(self):
         return self.name
     
@@ -37,19 +42,12 @@ class Type(models.Model):
 
 class Page(models.Model):
     title = models.CharField(max_length=200)
-    main_content = models.ForeignKey(Content)
+    main_content = models.ForeignKey(Content, related_name="main_content")
     summary = models.TextField(blank=True)
-    template = models.ForeignKey(Template)
-    supplimental_content_1 = models.ForeignKey(Content, blank=True, null=True, related_name='supplimental_page_content_1', help_text="You can add content like callouts, sidebars and more.")
-    supplimental_content_2 = models.ForeignKey(Content, blank=True, null=True, related_name='supplimental_page_content_2')
-    supplimental_content_3 = models.ForeignKey(Content, blank=True, null=True, related_name='supplimental_page_content_3')
-    supplimental_content_4 = models.ForeignKey(Content, blank=True, null=True, related_name='supplimental_page_content_4')
-    media_1 = models.ForeignKey(Media, blank=True, null=True, related_name='page_media_1', help_text="Typically the primary media content.")
-    media_2 = models.ForeignKey(Media, blank=True, null=True, related_name='page_media_2')
-    media_3 = models.ForeignKey(Media, blank=True, null=True, related_name='page_media_3')
-    media_4 = models.ForeignKey(Media, blank=True, null=True, related_name='page_media_4')
-    media_5 = models.ForeignKey(Media, blank=True, null=True, related_name='page_media_5')
-    media_6 = models.ForeignKey(Media, blank=True, null=True, related_name='page_media_6')
+    template = models.ForeignKey(Template, blank=True, null=True)
+    supplimental_content = models.ManyToManyField(Content, blank=True, related_name="supplimental_content")
+    content_hilight = models.ManyToManyField(Content, blank=True, related_name="content_hilight")
+    media = models.ManyToManyField(Media, blank=True)
     created = models.DateTimeField(auto_now_add=True)
     modified = models.DateTimeField(auto_now=True)
     author = models.ForeignKey(User)
@@ -87,8 +85,6 @@ class Page(models.Model):
         save_on_top = True
         search_fields = ['title', 'content', 'author']
         fields = (
-			('Content', {'fields': ('title', 'main_content', 'summary', 'status', 'template', 'author', 'section', 'section_home', 'page_type', 'slug', 'similar_pages', 'enable_comments', 'order')}),
-			('Additional Content', {'fields': ('supplimental_content_1', 'supplimental_content_2', 'supplimental_content_3', 'supplimental_content_4')}),
-			('Media', {'fields': ('media_1', 'media_2', 'media_3', 'media_4', 'media_5', 'media_6')}),
-			)
+        ('Content', {'fields': ('title', 'main_content', 'summary', 'status', 'template', 'author', 'section', 'section_home', 'page_type', 'slug', 'similar_pages', 'enable_comments', 'order', 'supplimental_content', 'content_hilight', 'media')}),
+        )
         pass
