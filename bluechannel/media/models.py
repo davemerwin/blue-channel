@@ -2,58 +2,58 @@ from django.db import models
 import tagging
 import datetime
 
-# Create your models here.
-FILE_LIST_DISPLAY = (('Yes', 'yes'), ('No', 'no'))
-
 class Type(models.Model):
-    name = models.CharField(max_length=100)
+    name = models.CharField(max_length=200)
+    slug = models.SlugField(prepopulate_from=('name',))
     description = models.TextField(blank=True)
-    created = models.DateTimeField(auto_now_add=True)
-    modified = models.DateTimeField(auto_now=True)
-    slug = models.SlugField(prepopulate_from=("name",))
-        
+    created = models.DateTimeField()
+    modified = models.DateTimeField()
+
     class Meta:
-        verbose_name = ('Type')
         verbose_name_plural = ('Type')
-        ordering = ['-name']
-        get_latest_by = ['modified']
-    
-    def __str__(self):
-        return self.slug
-        
+
+    def __unicode__(self):
+        return self.name
+
     def get_absolute_url(self):
-        return "/media-type/%i/" % self.slug
+        return "/media-type/%i/" % (self.slug)
 
     class Admin:
         save_on_top = True
-        pass
-    
+
 class Media(models.Model):
     name = models.CharField(max_length=250)
+    slug = models.SlugField(prepopulate_from=('name',))
     description = models.TextField(blank=True)
-    media_type = models.ForeignKey(Type, blank=True)
-    media_file = models.FileField(upload_to='%Y/%m/%d/', max_length=200, blank=True)
+    media_type = models.ForeignKey(Type, blank=True, null=True)
+    media_file = models.FileField(upload_to='%Y/%m/%d/', max_length=255, blank=True)
     media_embed = models.TextField(blank=True, help_text="Place your EMBED code here from YouTube, Flickr or others.")
-    list_display = models.CharField(max_length=4, choices=FILE_LIST_DISPLAY)
-    alt_text = models.CharField(blank=True, max_length=100)
     title_text = models.CharField(blank=True, max_length=100)
-    caption = models.CharField(blank=True, max_length=100)
+    alt_text = models.CharField(blank=True, max_length=100)
+    caption = models.CharField(blank=True, max_length=200)
     author = models.CharField(blank=True, max_length=100)
     liscense_type = models.CharField(blank=True, max_length=100)
     liscense_url = models.URLField(blank=True, verify_exists=True)
-    created = models.DateTimeField(auto_now_add=True)
-    modified = models.DateTimeField(auto_now=True)
-    slug = models.SlugField(prepopulate_from=("name",))
+    created = models.DateTimeField()
+    modified = models.DateTimeField()
         
     class Meta:
-        verbose_name = ('Media')
         verbose_name_plural = ('Media')
-        ordering = ['-name', 'media_type']
-        get_latest_by = ['modified']
     
-    def __str__(self):
+    class Admin:
+        save_on_top = True
+        list_filter = ('media_type','display')
+        list_display = ('name', 'media_type', 'title_text', 'author', 'display')
+
+    def __unicode__(self):
         return self.name
-        
+
+    def save(self):
+        if not self.id:
+            self.created = datetime.datetime.now()
+        self.modified = datetime.datetime.now()
+        super(Media, self).save()
+    
     def get_absolute_url(self):
         return self.get_media_file_url()
         
@@ -70,10 +70,3 @@ class Media(models.Model):
         Tag.objects.update_tags(self, tag_list)
 
     tags = property(_get_tags, _set_tags)
-    
-    class Admin:
-        list_filter = ('name','media_type',)
-        list_display = ['name', 'description']
-        save_on_top = True
-        search_fields = ['name', 'description', 'media_type']
-        pass
