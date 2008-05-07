@@ -36,6 +36,7 @@ class Media(models.Model):
     liscense_url = models.URLField(blank=True, verify_exists=True)
     created = models.DateTimeField()
     modified = models.DateTimeField()
+    display = models.BooleanField(default=True)
         
     class Meta:
         verbose_name_plural = ('Media')

@@ -80,11 +80,15 @@ class Page(models.Model):
     similar_pages = models.ManyToManyField('self', filter_interface=models.HORIZONTAL, related_name='similar')
     enable_comments = models.BooleanField(default=False)
     order = models.IntegerField(blank=True, null=True)
+    in_nav = models.BooleanField(default=False, help_text=("Does this page represent a top level link for the site? Do you want it avalable from the Nav Bar?"))
+    in_site_map = models.BooleanField(default=True)
+    has_next = models.BooleanField(default=False, help_text=("Does this page have a next page?"))
     tags = TagField()
+    categories = models.CharField(blank=True, max_length=100)
 
     class Admin:
         save_on_top = True
-        list_filter = ('title','author','template')
+        list_filter = ('title','author','template', 'nav_page')
 
     def save(self):
         if not self.id:
