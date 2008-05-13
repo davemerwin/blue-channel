@@ -1,0 +1,76 @@
+8
+
+dir
+142
+http://django-registration.googlecode.com/svn/trunk/registration/locale
+http://django-registration.googlecode.com/svn
+
+
+
+2008-03-24T01:47:54.739329Z
+142
+ubernostrum
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+b970a8a1-db28-0410-9b79-8b7e580363d3
+
+ru
+dir
+
+de
+dir
+
+bg
+dir
+
+sv
+dir
+
+es_AR
+dir
+
+ja
+dir
+
+zh_TW
+dir
+
+he
+dir
+
+el
+dir
+
+zh_CN
+dir
+
+en
+dir
+
+ar
+dir
+
+pt_BR
+dir
+
+fr
+dir
+
+es
+dir
+
+pl
+dir
+

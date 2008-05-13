@@ -1,0 +1,70 @@
+8
+
+dir
+86
+http://django-comment-utils.googlecode.com/svn/trunk/comment_utils
+http://django-comment-utils.googlecode.com/svn
+
+
+
+2008-02-02T04:56:05.750158Z
+86
+ubernostrum
+has-props
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+71c79c79-8932-0410-8db2-b50025d4c983
+
+managers.py
+file
+
+
+
+
+2008-05-12T23:58:23.000000Z
+f5d6e0ca24d30d22bc948119c543db4e
+2008-02-02T04:56:05.750158Z
+86
+ubernostrum
+
+__init__.py
+file
+
+
+
+
+2008-05-12T23:58:23.000000Z
+d41d8cd98f00b204e9800998ecf8427e
+2007-06-10T23:31:06.593078Z
+2
+ubernostrum
+
+bin
+dir
+
+moderation.py
+file
+
+
+
+
+2008-05-12T23:58:23.000000Z
+80cb8d0c8c7fbd85a96be636f2a281c1
+2007-11-21T10:41:55.370740Z
+84
+ubernostrum
+
+templatetags
+dir
+

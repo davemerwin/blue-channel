@@ -1,0 +1,65 @@
+K 25
+svn:wc:ra_dav:version-url
+V 31
+/svn/!svn/ver/137/trunk/tagging
+END
+validators.py
+K 25
+svn:wc:ra_dav:version-url
+V 45
+/svn/!svn/ver/114/trunk/tagging/validators.py
+END
+generic.py
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/svn/!svn/ver/131/trunk/tagging/generic.py
+END
+managers.py
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/svn/!svn/ver/130/trunk/tagging/managers.py
+END
+views.py
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/!svn/ver/130/trunk/tagging/views.py
+END
+__init__.py
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/svn/!svn/ver/130/trunk/tagging/__init__.py
+END
+utils.py
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/!svn/ver/130/trunk/tagging/utils.py
+END
+settings.py
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/svn/!svn/ver/114/trunk/tagging/settings.py
+END
+models.py
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/!svn/ver/136/trunk/tagging/models.py
+END
+fields.py
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/!svn/ver/134/trunk/tagging/fields.py
+END
+forms.py
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/!svn/ver/114/trunk/tagging/forms.py
+END

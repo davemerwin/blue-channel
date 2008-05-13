@@ -1,0 +1,53 @@
+8
+
+dir
+142
+http://django-registration.googlecode.com/svn/trunk/registration/locale/he/LC_MESSAGES
+http://django-registration.googlecode.com/svn
+
+
+
+2008-02-10T02:41:38.160622Z
+137
+ubernostrum
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+b970a8a1-db28-0410-9b79-8b7e580363d3
+
+django.po
+file
+
+
+
+
+2008-05-12T23:57:37.000000Z
+d7ce0866facfa6a6fcb9dc7e382ec7ef
+2008-02-10T02:40:10.486162Z
+136
+ubernostrum
+
+django.mo
+file
+
+
+
+
+2008-05-12T23:57:37.000000Z
+b1eb1d1c8e7d70bea4936b30fa58f329
+2008-02-10T02:41:38.160622Z
+137
+ubernostrum
+has-props
+

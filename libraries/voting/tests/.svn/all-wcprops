@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 35
+/svn/!svn/ver/60/trunk/voting/tests
+END
+__init__.py
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/!svn/ver/58/trunk/voting/tests/__init__.py
+END
+settings.py
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/!svn/ver/58/trunk/voting/tests/settings.py
+END
+tests.py
+K 25
+svn:wc:ra_dav:version-url
+V 44
+/svn/!svn/ver/60/trunk/voting/tests/tests.py
+END
+models.py
+K 25
+svn:wc:ra_dav:version-url
+V 45
+/svn/!svn/ver/58/trunk/voting/tests/models.py
+END
+runtests.py
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/!svn/ver/58/trunk/voting/tests/runtests.py
+END

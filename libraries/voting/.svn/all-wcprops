@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 29
+/svn/!svn/ver/60/trunk/voting
+END
+managers.py
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/!svn/ver/60/trunk/voting/managers.py
+END
+views.py
+K 25
+svn:wc:ra_dav:version-url
+V 38
+/svn/!svn/ver/58/trunk/voting/views.py
+END
+__init__.py
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/!svn/ver/58/trunk/voting/__init__.py
+END
+models.py
+K 25
+svn:wc:ra_dav:version-url
+V 39
+/svn/!svn/ver/58/trunk/voting/models.py
+END

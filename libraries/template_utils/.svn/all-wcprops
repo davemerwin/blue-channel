@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 38
+/svn/!svn/ver/106/trunk/template_utils
+END
+nodes.py
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/!svn/ver/104/trunk/template_utils/nodes.py
+END
+__init__.py
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/!svn/ver/45/trunk/template_utils/__init__.py
+END
+markup.py
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/!svn/ver/95/trunk/template_utils/markup.py
+END
+context_processors.py
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/!svn/ver/45/trunk/template_utils/context_processors.py
+END
