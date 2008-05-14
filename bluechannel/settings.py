@@ -1,7 +1,7 @@
 # Django settings for codereviewr project.
 import os
 
-DEBUG = False
+DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 PROJECT_PATH = os.path.abspath(os.path.split(__file__)[0])
 
@@ -12,9 +12,9 @@ ADMINS = (
 MANAGERS = ADMINS
 
 DATABASE_ENGINE = 'mysql'           # 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-DATABASE_NAME = ''             # Or path to database file if using sqlite3.
-DATABASE_USER = ''             # Not used with sqlite3.
-DATABASE_PASSWORD = ''         # Not used with sqlite3.
+DATABASE_NAME = 'merwin_prod'             # Or path to database file if using sqlite3.
+DATABASE_USER = 'merwin_prod'             # Not used with sqlite3.
+DATABASE_PASSWORD = '37387ef1'         # Not used with sqlite3.
 DATABASE_HOST = ''             # Set to empty string for localhost. Not used with sqlite3.
 DATABASE_PORT = ''             # Set to empty string for default. Not used with sqlite3.
 
@@ -47,7 +47,7 @@ MEDIA_URL = ''
 # URL prefix for admin media -- CSS, JavaScript and images. Make sure to use a
 # trailing slash.
 # Examples: "http://foo.com/media/", "/media/".
-ADMIN_MEDIA_PREFIX = '/media/'
+ADMIN_MEDIA_PREFIX = '/static/'
 
 # Make this unique, and don't share it with anybody.
 #SECRET_KEY = ''
@@ -68,9 +68,7 @@ MIDDLEWARE_CLASSES = (
 
 ROOT_URLCONF = 'bluechannel.urls'
 
-TEMPLATE_DIRS = (
-    os.path.join(PROJECT_PATH, 'templates'),
-)
+TEMPLATE_DIRS = '/home/merwin/webapp/bluechannel/templates'
 
 TEMPLATE_CONTEXT_PROCESSORS = (
     'django.core.context_processors.auth',

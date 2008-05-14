@@ -3,7 +3,6 @@ from tagging.fields import TagField
 from django.db import models
 from django.contrib.auth.models import User
 from bluechannel.media.models import *
-from bluechannel.structure.models import *
 from bluechannel.layout.models import *
 
 
@@ -88,7 +87,7 @@ class Page(models.Model):
 
     class Admin:
         save_on_top = True
-        list_filter = ('title','author','template', 'nav_page')
+        list_filter = ('title','author','template', 'in_nav')
 
     def save(self):
         if not self.id:
