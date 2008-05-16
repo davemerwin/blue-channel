@@ -1,23 +1,31 @@
+import datetime
 from django.db import models
 
-# Create your models here.
 class Template(models.Model):
+    """
+    If Page specifies a template, this is the template that is used to render
+    the page.  Template files are based on the slugified name.
+    """
     name = models.CharField(blank=True, max_length=200)
     description = models.TextField(blank=True)
     created = models.DateTimeField(auto_now_add=True)
     modified = models.DateTimeField(auto_now=True)
-    template_file = models.CharField('Template File Name', max_length=200, blank=True, help_text=("Example: 'templates/three-column.html'. If this isn't provided, the system will use 'templates/default.html'."))
     
-    class Meta:
-        verbose_name = ('Template')
-        verbose_name_plural = ('Templates')
-        ordering = ('name',)
-
-    def __str__(self):
+    def __unicode__(self):
         return self.name
+
+    class Meta:
+        ordering = ('name',)
 
     class Admin:
         list_filter = ('name',)
         save_on_top = True
-        search_fields = ['name', 'description',]
-        pass
+        search_fields = ('name', 'description',)
+
+    def save(self):
+        if not self.id:
+            self.created = datetime.datetime.now()
+        self.modified = datetime.datetime.now()
+        super(Template, self).save()
+
+    
