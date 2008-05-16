@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load markup %}
+{% load markup page_tags %}
 
 {% block title %}{{ object.title }}{% endblock %}
 {% block content %}
@@ -14,4 +14,8 @@
         {% endif %}
 	   {{object.main_content.content|markdown}}
 	</div>
+	
+	{% get_breadcrumb for object %}
+	{{ breadcrumb|pprint }}
+	
 {% endblock %}

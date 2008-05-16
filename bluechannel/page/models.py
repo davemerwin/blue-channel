@@ -108,18 +108,25 @@ class Page(models.Model):
         return self.title
 
     def get_absolute_url(self):
-        if not self.parent:
-            return '/%s/' % (self.slug)
-        page = self
-        page_list = []
-        while not page.parent:
-            page=page.parent
-            page_list.append(page.slug)
-        return '/%s/' % ('/'.join(page_list))
+        parents = self.get_all_parents()
+        return '/%s/' % ('/'.join([p.slug for p in parents]))
 
-    def get_all_children(self):
+    def get_all_parents(self):
+        "Gets all parents going up the parent tree until a page with no parent, including itself."
+        parents = []
+        page = self
+        while True:
+            parents.insert(0, page)
+            page = page.parent
+            if not page:
+                break
+        return parents
+
+    def get_children(self):
+        "Gets children of current page, no grandchildren."
         return Page.objects.filter(parent=self.id)
 
     def get_all_siblings(self):
+        "Gets siblings of current page only, no children of siblings."
         return Page.objects.filter(parent=self.parent)
         return "/%i/" % (self.slug)
