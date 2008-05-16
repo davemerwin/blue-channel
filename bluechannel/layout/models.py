@@ -6,7 +6,7 @@ class Template(models.Model):
     If Page specifies a template, this is the template that is used to render
     the page.  Template files are based on the slugified name.
     """
-    name = models.CharField(blank=True, max_length=200)
+    name = models.CharField(max_length=200)
     description = models.TextField(blank=True)
     created = models.DateTimeField()
     modified = models.DateTimeField()
