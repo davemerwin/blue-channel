@@ -1,4 +1,4 @@
-import datetime
+from datetime import datetime
 from django.db import models
 
 class Template(models.Model):
@@ -8,8 +8,8 @@ class Template(models.Model):
     """
     name = models.CharField(max_length=200)
     description = models.TextField(blank=True)
-    created = models.DateTimeField()
-    modified = models.DateTimeField()
+    created = models.DateTimeField(default=datetime.now)
+    modified = models.DateTimeField(default=datetime.now)
     
     def __unicode__(self):
         return self.name
@@ -24,8 +24,8 @@ class Template(models.Model):
 
     def save(self):
         if not self.id:
-            self.created = datetime.datetime.now()
-        self.modified = datetime.datetime.now()
+            self.created = datetime.now()
+        self.modified = datetime.now()
         super(Template, self).save()
 
     

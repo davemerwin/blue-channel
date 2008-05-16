@@ -68,7 +68,7 @@ MIDDLEWARE_CLASSES = (
 ROOT_URLCONF = 'bluechannel.urls'
 
 TEMPLATE_DIRS = (
-    os.path.join(PROJECT_PATH, 'templates'),
+    os.path.join(PROJECT_PATH, '..', 'templates'),
 )
 
 TEMPLATE_CONTEXT_PROCESSORS = (
