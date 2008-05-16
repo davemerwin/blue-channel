@@ -42,8 +42,8 @@ class Media(models.Model):
     
     class Admin:
         save_on_top = True
-        list_filter = ('media_type','display')
-        list_display = ('name', 'media_type', 'title_text', 'author', 'display')
+        list_filter = ('media_type',)
+        list_display = ('name', 'media_type', 'title_text', 'author',)
 
     def __unicode__(self):
         return self.name

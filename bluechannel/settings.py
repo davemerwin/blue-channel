@@ -1,4 +1,3 @@
-# Django settings for codereviewr project.
 import os
 
 DEBUG = False
@@ -94,7 +93,6 @@ INSTALLED_APPS = (
     'django.contrib.syndication',
     'bluechannel.media',
     'bluechannel.profiles',
-    'bluechannel.structure',
     'bluechannel.page',
     'bluechannel.layout',
     'voting',

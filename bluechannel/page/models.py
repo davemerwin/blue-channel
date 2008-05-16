@@ -3,9 +3,7 @@ from tagging.fields import TagField
 from django.db import models
 from django.contrib.auth.models import User
 from bluechannel.media.models import *
-from bluechannel.structure.models import *
 from bluechannel.layout.models import *
-
 
 class Content(models.Model):
     """

@@ -1,4 +1,3 @@
-# Create your views here.
 from django.views.generic.list_detail import *
 from bluechannel.page.models import *
 
