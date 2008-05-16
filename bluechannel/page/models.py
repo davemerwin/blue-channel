@@ -88,7 +88,11 @@ class Page(models.Model):
     similar_pages = models.ManyToManyField('self', blank=True, filter_interface=models.HORIZONTAL, related_name='similar')
     enable_comments = models.BooleanField(default=False)
     order = models.IntegerField(blank=True, null=True)
+    in_nav = models.BooleanField(default=False, help_text=("Does this page represent a top level link for the site? Do you want it avalable from the Nav Bar?"))
+    in_site_map = models.BooleanField(default=True)
+    has_next = models.BooleanField(default=False, help_text=("Does this page have a next page?"))
     tags = TagField()
+    categories = models.CharField(blank=True, max_length=100)
 
     objects = models.Manager() # The default manager.
     published_objects = PublishedPageManager() # Only published pages
@@ -96,7 +100,7 @@ class Page(models.Model):
     class Admin:
         save_on_top = True
         list_display = ('title', 'parent', 'status', 'template', 'author', 'modified')
-        list_filter = ('author','template','status')
+        list_filter = ('author','template','status','in_nav')
 
     def save(self):
         if not self.id:
