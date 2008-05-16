@@ -13,7 +13,7 @@ urlpatterns = patterns('',
     (r'^profiles/', include('profiles.urls')),
     
     # Page Detail
-    (r'^(?P<slug>[-\w]+)/$', 'bluechannel.page.views.detail'),
+    (r'(?P<slug>[-\w]+)/$', 'bluechannel.page.views.detail'),
     
     #for homepage - testing
     (r'^$', direct_to_template, {'template': 'homepage.html'}),

@@ -9,7 +9,6 @@ class Content(models.Model):
     """
     A piece of content that is included via Page.
     """
-    
     CONTENT_STATUS = (
         ('draft', 'Draft'),
         ('remove', 'Remove'),
@@ -56,15 +55,26 @@ class Type(models.Model):
     class Admin:
         pass
 
+# Published Page Manager
+class PublishedPageManager(models.Manager):
+    def get_query_set(self):
+        return super(PublishedPageManager, self).get_query_set().filter(status='publish')
+
 class Page(models.Model):
     """
     The central Page model.  This correlates directly with the URL such that
     the URL `/about/` would be Page.objects.get(slug='about').  Pages can be
     nested heirarchically.
     """
+    PAGE_STATUS = (
+        ('draft', 'Draft'),
+        ('remove', 'Remove'),
+        ('publish', 'Publish')
+    )
     title = models.CharField(max_length=200)
     slug = models.SlugField(prepopulate_from=('title',))
     parent = models.ForeignKey('self', blank=True, null=True, related_name='child')
+    status = models.CharField(max_length=20, choices=PAGE_STATUS)
     main_content = models.ForeignKey(Content, related_name='main_content')
     summary = models.TextField(blank=True)
     template = models.ForeignKey(Template)
@@ -80,9 +90,13 @@ class Page(models.Model):
     order = models.IntegerField(blank=True, null=True)
     tags = TagField()
 
+    objects = models.Manager() # The default manager.
+    published_objects = PublishedPageManager() # Only published pages
+
     class Admin:
         save_on_top = True
-        list_filter = ('title','author','template')
+        list_display = ('title', 'parent', 'status', 'template', 'author', 'modified')
+        list_filter = ('author','template','status')
 
     def save(self):
         if not self.id:
@@ -109,4 +123,3 @@ class Page(models.Model):
     def get_all_siblings(self):
         return Page.objects.filter(parent=self.parent)
         return "/%i/" % (self.slug)
-
