@@ -75,7 +75,7 @@ class Page(models.Model):
     slug = models.SlugField(prepopulate_from=('title',))
     parent = models.ForeignKey('self', blank=True, null=True, related_name='child')
     status = models.CharField(max_length=20, choices=PAGE_STATUS)
-    main_content = models.ForeignKey(Content, related_name='main_content')
+    main_content = models.TextField(blank=True)
     summary = models.TextField(blank=True)
     template = models.ForeignKey(Template)
     extra_content = models.ManyToManyField(Content, related_name='extra_content')
