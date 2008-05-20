@@ -78,17 +78,17 @@ class Page(models.Model):
     main_content = models.TextField(blank=True)
     summary = models.TextField(blank=True)
     template = models.ForeignKey(Template)
-    extra_content = models.ManyToManyField(Content, related_name='extra_content')
-    content_hilight = models.ManyToManyField(Content, related_name='content_hilight')
+    extra_content = models.ManyToManyField(Content, blank=True, related_name='extra_content')
+    content_hilight = models.ManyToManyField(Content, blank=True, related_name='content_hilight')
     media = models.ManyToManyField(Media, blank=True)
     created = models.DateTimeField(default=datetime.now)
     modified = models.DateTimeField(default=datetime.now)
     author = models.ForeignKey(User)
-    page_type = models.ForeignKey(Type)
     similar_pages = models.ManyToManyField('self', blank=True, filter_interface=models.HORIZONTAL, related_name='similar')
     enable_comments = models.BooleanField(default=False)
     order = models.IntegerField(blank=True, null=True)
     in_nav = models.BooleanField(default=False, help_text=("Does this page represent a top level link for the site? Do you want it avalable from the Nav Bar?"))
+    is_home = models.BooleanField(default=False, blank=True, help_text=("Is this the site's homepage?"))
     in_site_map = models.BooleanField(default=True)
     has_next = models.BooleanField(default=False, help_text=("Does this page have a next page?"))
     tags = TagField()
@@ -99,7 +99,7 @@ class Page(models.Model):
 
     class Admin:
         save_on_top = True
-        list_display = ('title', 'parent', 'status', 'template', 'author', 'modified')
+        list_display = ('title', 'parent', 'status', 'summary', 'template', 'author', 'modified')
         list_filter = ('author','template','status','in_nav')
 
     def save(self):

@@ -1,1 +1,3 @@
 This software is licensed under the GPL license. Please read "license.txt" for more information.
+
+The sample DB has a few pages set up so that you can quickly get started. The sample admin user's username is admin and the password is bluechannel. The db is a mysql database.
