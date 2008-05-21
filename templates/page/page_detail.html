@@ -3,19 +3,14 @@
 
 {% block title %}{{ object.title }}{% endblock %}
 {% block content %}
-	<div id="content" class="clear">
-        <h1>{{object.title}}</h1>
-        {% if object.media_1 %}
-            <div id="{{ object.media_1.name }}">
-                {% ifequal object.media_1.media_type.name "Image" %}
-                    <img src="{{ object.media_1.get_absolute_url }}" alt="{{ object.media_1.alt_text }}">
-                {% endifequal %}
-            </div>
-        {% endif %}
-	   {{object.main_content.content|markdown}}
-	</div>
-	
-	{% get_breadcrumb for object %}
-	{{ breadcrumb|pprint }}
-	
+<div id="pageContent" class="grid_10">
+    <h2>{{object.title}}</h2>
+    {{object.main_content|markdown}}
+</div>
+{% endblock %}
+
+{% block sidebar %}
+    <div id="sidebar" class="grid_6">
+        {% show_page_list %}
+    </div>
 {% endblock %}

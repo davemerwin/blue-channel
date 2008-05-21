@@ -1,24 +1,3 @@
--- phpMyAdmin SQL Dump
--- version 2.11.3
--- http://www.phpmyadmin.net
---
--- Host: localhost
--- Generation Time: May 20, 2008 at 09:44 AM
--- Server version: 5.0.45
--- PHP Version: 5.2.5
-
-SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
-
---
--- Database: `bluechannel_dev`
---
-
--- --------------------------------------------------------
-
---
--- Table structure for table `auth_group`
---
-
 CREATE TABLE IF NOT EXISTS `auth_group` (
   `id` int(11) NOT NULL auto_increment,
   `name` varchar(80) NOT NULL,

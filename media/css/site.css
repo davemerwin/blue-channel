@@ -7,9 +7,9 @@
 */
 
 /* Get the basics */
+@import "reset.css";
 @import "960.css";
 @import "text.css";
-@import "reset.css";
 
 /* =GENERAL
 ----------------------------------------------------------------------------*/

@@ -59,3 +59,15 @@ class BreadcrumbNode(template.Node):
         page_list = page.get_all_parents()
         context[self.context_var] = page_list
         return ''
+
+        from bluechannel.content.models import *
+        from bluechannel.event.models import *
+        from bluechannel.asset.models import *
+        from django import template
+
+        register = template.Library()
+
+@register.inclusion_tag('includes/page_list.html')
+def show_page_list():
+    page_list = Page.objects.filter(in_nav=1)
+    return {'page_list': page_list}
