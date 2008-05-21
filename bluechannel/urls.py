@@ -23,7 +23,7 @@ urlpatterns = patterns('',
     #(r'(?P<slug>[-\w]+)/$', object_detail, info_dict),
     
     #for homepage - testing
-    #(r'^$', direct_to_template, {'template': 'homepage.html'}),
+    (r'^$', direct_to_template, {'template': 'page/homepage.html'}),
     
     # Creates Site Maps
     # (r'^sitemap.xml$', 'django.contrib.sitemaps.views.sitemap', {'sitemaps': sitemaps})
