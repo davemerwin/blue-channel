@@ -69,5 +69,16 @@ class BreadcrumbNode(template.Node):
 
 @register.inclusion_tag('includes/page_list.html')
 def show_page_list():
+    """
+    For creating a nav list
+    """
     page_list = Page.objects.filter(in_nav=1)
     return {'page_list': page_list}
+
+@register.inclusion_tag('includes/random_testimonial.html')
+def show_random_testimonial():
+    """
+    For generating a single piece of content from pages
+    """
+    random_testimonial = Page.objects.filter(tags='testimonial').order_by('?')[0]
+    return {'random_testimonial': random_testimonial}
