@@ -78,7 +78,7 @@ def show_page_list():
 @register.inclusion_tag('includes/random_testimonial.html')
 def show_random_testimonial():
     """
-    For generating a single piece of content from pages
+    For generating a single piece of content from content tagged testimonial
     """
-    random_testimonial = Page.objects.filter(tags='testimonial').order_by('?')[0]
+    random_testimonial = Content.objects.filter(tags='testimonial').order_by('?')[0]
     return {'random_testimonial': random_testimonial}

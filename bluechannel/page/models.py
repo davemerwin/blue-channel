@@ -19,6 +19,7 @@ class Content(models.Model):
     status = models.CharField(max_length=20, choices=CONTENT_STATUS)
     created = models.DateTimeField(default=datetime.now)
     modified = models.DateTimeField(default=datetime.now)
+    tags = TagField()
     
     def __unicode__(self):
         return self.name
