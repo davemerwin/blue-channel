@@ -36,8 +36,6 @@ class Media(models.Model):
     liscense_url = models.URLField(blank=True, verify_exists=True)
     created = models.DateTimeField(default=datetime.now)
     modified = models.DateTimeField(default=datetime.now)
-    created = models.DateTimeField()
-    modified = models.DateTimeField()
     display = models.BooleanField(default=True)
     
     class Meta:
@@ -65,11 +63,3 @@ class Media(models.Model):
         field.upload_to = '%s/%s' % (self.media_type, field.upload_to)
         super(Media, self)._save_FIELD_file(field, filename, raw_contents, save)
         field.upload_to = original_upload_to
-    
-    def _get_tags(self):
-        return Tag.objects.get_for_object(self)
-
-    def _set_tags(self, tag_list):
-        Tag.objects.update_tags(self, tag_list)
-
-    tags = property(_get_tags, _set_tags)

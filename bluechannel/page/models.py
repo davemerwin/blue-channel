@@ -29,6 +29,7 @@ class Content(models.Model):
         verbose_name_plural = ('Content')
 
     class Admin:
+        save_on_top = True
         pass
     
     def save(self):
@@ -39,7 +40,7 @@ class Content(models.Model):
         
 class Type(models.Model):
     """
-    What is Type?
+    What Type it?
     """
     name = models.CharField(max_length=100)
     description = models.TextField(blank=True)
@@ -54,7 +55,32 @@ class Type(models.Model):
         return self.name
     
     class Admin:
+        save_on_top = True
         pass
+        
+class Event(models.Model):
+    """The events module"""
+    name = models.CharField(blank=True, max_length=200)
+    event_start_date = models.DateField(blank=True)
+    event_start_time = models.TimeField(blank=True)
+    event_end_date = models.DateField(blank=True)
+    event_end_time = models.TimeField(blank=True)
+    description = models.TextField('Content', blank=True)
+    summary = models.TextField(blank=True)
+    created = models.DateTimeField(editable=False)
+    modified = models.DateTimeField(editable=False)
+    slug = models.SlugField(prepopulate_from=("name",))
+    tags = TagField()
+    enable_comments = models.BooleanField(default=True)
+
+    class Admin:
+        save_on_top = True
+        list_display = ('name','event_start_date')
+        search_fields = ('name','description')
+        pass
+    
+    def __unicode__(self):
+        return self.name
 
 # Published Page Manager
 class PublishedPageManager(models.Manager):
@@ -81,6 +107,7 @@ class Page(models.Model):
     template = models.ForeignKey(Template)
     extra_content = models.ManyToManyField(Content, blank=True, related_name='extra_content')
     content_hilight = models.ManyToManyField(Content, blank=True, related_name='content_hilight')
+    event = models.ForeignKey(Event, blank=True)
     media = models.ManyToManyField(Media, blank=True)
     created = models.DateTimeField(default=datetime.now)
     modified = models.DateTimeField(default=datetime.now)
@@ -93,8 +120,6 @@ class Page(models.Model):
     in_site_map = models.BooleanField(default=True)
     has_next = models.BooleanField(default=False, help_text=("Does this page have a next page?"))
     tags = TagField()
-    categories = models.CharField(blank=True, max_length=100)
-
     objects = models.Manager() # The default manager.
     published_objects = PublishedPageManager() # Only published pages
 

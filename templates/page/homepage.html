@@ -3,15 +3,25 @@
 
 {% block title %}{{ object.title }}{% endblock %}
 {% block content %}
-<div id="pageContent" class="grid_10">
+<div id="pageContent" class="grid_8">
     <h2>{{object.title}}</h2>
+    {% if object.media.all %}
+        {% for media in object.media.all %}
+            <h2>{{media.name}}</h2>
+            {{media.media_embed|safe}}
+        {% endfor %}
+    {% endif %}
     {{object.main_content|markdown}}
 </div>
 {% endblock %}
 
 {% block sidebar %}
-    <div id="sidebar" class="grid_6">
-        {% include "includes/global_nav.html" %}
-        {% show_page_list %}
+<div id="sidebar" class="">
+    <div class="grid_4">
+        {% include "includes/sidebar_col1.html" %}
     </div>
+    <div class="grid_4">
+        {% include "includes/sidebar_col2.html" %}
+    </div>
+</div>
 {% endblock %}
