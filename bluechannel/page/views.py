@@ -1,4 +1,3 @@
-# Create your views here.
 from django.views.generic.list_detail import *
 from bluechannel.page.models import *
 
@@ -12,3 +11,7 @@ def published_page(request, slug):
     slug_field=slug
     published_page = Page.objects.filter(status='Publish')
     return object_detail(request, slug=slug_field, queryset=published_page)
+
+def detail(request, slug):
+    return object_detail(request, slug=slug, queryset=Page.published_objects.all())
+    

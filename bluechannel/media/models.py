@@ -1,13 +1,13 @@
+from datetime import datetime
 from django.db import models
 import tagging
-import datetime
 
 class Type(models.Model):
     name = models.CharField(max_length=200)
     slug = models.SlugField(prepopulate_from=('name',))
     description = models.TextField(blank=True)
-    created = models.DateTimeField()
-    modified = models.DateTimeField()
+    created = models.DateTimeField(default=datetime.now)
+    modified = models.DateTimeField(default=datetime.now)
 
     class Meta:
         verbose_name_plural = ('Type')
@@ -34,25 +34,27 @@ class Media(models.Model):
     author = models.CharField(blank=True, max_length=100)
     liscense_type = models.CharField(blank=True, max_length=100)
     liscense_url = models.URLField(blank=True, verify_exists=True)
+    created = models.DateTimeField(default=datetime.now)
+    modified = models.DateTimeField(default=datetime.now)
     created = models.DateTimeField()
     modified = models.DateTimeField()
     display = models.BooleanField(default=True)
-        
+    
     class Meta:
         verbose_name_plural = ('Media')
     
     class Admin:
         save_on_top = True
-        list_filter = ('media_type','display')
-        list_display = ('name', 'media_type', 'title_text', 'author', 'display')
+        list_filter = ('media_type',)
+        list_display = ('name', 'media_type', 'title_text', 'author',)
 
     def __unicode__(self):
         return self.name
 
     def save(self):
         if not self.id:
-            self.created = datetime.datetime.now()
-        self.modified = datetime.datetime.now()
+            self.created = datetime.now()
+        self.modified = datetime.now()
         super(Media, self).save()
     
     def get_absolute_url(self):

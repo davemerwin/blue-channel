@@ -5,12 +5,6 @@
 {% block content %}
 <div id="pageContent" class="grid_10">
     <h2>{{object.title}}</h2>
-    {% if object.media.all %}
-        {% for media in object.media.all %}
-            <h2>{{media.name}}</h2>
-            {{media.media_embed|safe}}
-        {% endfor %}
-    {% endif %}
     {{object.main_content|markdown}}
 </div>
 {% endblock %}

@@ -1,4 +1,3 @@
-# Django settings for codereviewr project.
 import os
 
 DEBUG = True
@@ -68,7 +67,9 @@ MIDDLEWARE_CLASSES = (
 
 ROOT_URLCONF = 'bluechannel.urls'
 
-TEMPLATE_DIRS = '/home/merwin/webapp/bluechannel/templates'
+TEMPLATE_DIRS = (
+    os.path.join(PROJECT_PATH, '..', 'templates'),
+)
 
 TEMPLATE_CONTEXT_PROCESSORS = (
     'django.core.context_processors.auth',
