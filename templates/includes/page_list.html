@@ -1,5 +1,5 @@
 {% if page_list %}
-    <ul>
+    <ul id="nav">
         {% for page in page_list %}
             <li><a href="{{ page.get_absolute_url }}" title="{{ page.title }}">{{page.title}}</a></li>
         {% endfor %}

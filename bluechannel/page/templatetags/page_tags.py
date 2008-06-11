@@ -82,3 +82,27 @@ def show_random_testimonial():
     """
     random_testimonial = Content.objects.filter(tags='testimonial').order_by('?')[0]
     return {'random_testimonial': random_testimonial}
+    
+@register.inclusion_tag('includes/home_detail.html')
+def show_home_detail():
+    """
+    For generating a single piece of content from pages
+    """
+    home_detail = Page.objects.filter(tags='home').order_by('created')[0]
+    return {'home_detail': home_detail}
+
+@register.inclusion_tag('includes/events_list.html')
+def show_events_list():
+    """
+    For showing pages tagged with events
+    """
+    events_list = Page.objects.filter(tags='events').order_by('-created')
+    return {'events_list': events_list}
+
+@register.inclusion_tag('includes/news_list.html')
+def show_news_list():
+    """
+    For showing pages tagged with events
+    """
+    news_list = Page.objects.filter(tags='news').order_by('-created')
+    return {'news_list': news_list}
