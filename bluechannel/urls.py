@@ -15,7 +15,7 @@ urlpatterns = patterns('',
     (r'^profiles/', include('profiles.urls')),
     
     # Page Detail
-    #(r'^(?P<slug>[-\w]+)/$', section_base),
+    (r'^(?P<slug>[-\w]+)/$', object_detail),
     
     #for homepage - testing
     #(r'^$', direct_to_template, {'template': 'homepage.html'}),
