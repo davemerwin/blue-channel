@@ -106,3 +106,11 @@ def show_news_list():
     """
     news_list = Page.objects.filter(tags='news').order_by('-created')
     return {'news_list': news_list}
+    
+@register.inclusion_tag('includes/did_you_know.html')
+def get_did_you_know():
+    """
+    For showing pages tagged with events
+    """
+    did_you_know = Content.objects.filter(tags='dyk').order_by('?')[0]
+    return {'did_you_know': did_you_know}

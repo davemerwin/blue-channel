@@ -1,3 +1,5 @@
+{% load page_tags %}
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
    "http://www.w3.org/TR/html4/strict.dtd">
 
@@ -6,26 +8,88 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>{% block title %}{% endblock %}</title>
     <meta name="author" content="Dave Merwin">
-    <link rel="stylesheet" href="{{ MEDIA_URL }}css/site.css" type="text/css" media="screen, projection">
-    <link rel="stylesheet" href="{{ MEDIA_URL }}css/print.css" type="text/css" media="print">
-    <!--[if IE]><link rel="stylesheet" href="{{ MEDIA_URL }}css/ie.css" type="text/css" media="screen, projection"><![endif]-->
+    <meta name="keywords" content="TO BE ADDED">
+    <meta name="description" content="TO BE ADDED">
     
-    <script type="text/javascript" src="{{ MEDIA_URL }}js/jquery-1.2.3.js"></script>
+    <link rel="stylesheet" type="text/css" media="all" href="{{ MEDIA_URL }}css/site.css">
+    <link rel="stylesheet" type="text/css" media="all" href="{{ MEDIA_URL }}css/print.css">
+    
+    <script type="text/javascript" src="{{ MEDIA_URL }}js/jquery-1.2.3.min.js"></script>
+    <script type="text/javascript" src="{{ MEDIA_URL }}js/jquery.dimensions.min.js"></script>
+    <script type="text/javascript" src="{{ MEDIA_URL }}js/cookie.js"></script>
     <script type="text/javascript" src="{{ MEDIA_URL }}js/site.settings.js"></script>
 </head>
 <body>
-    <p id="content-skip" class="mir"><a href="#content" title="Skip To Content" class="mir">Skip To Content</a></p>
-    <div id="wrap" class="container_16">
-        <div id="masthead">
-            
-        </div>
-        <div id="content" class="clearfix">
-            {% block content %}{% endblock %}
-            {% block sidebar %}{% endblock %}
-        </div>
-        <div id="footer">
-            
-        </div>
+<div id="wrap" class="container_16">
+    <div id="masthead" class="">
+        <h2 id="projectTitle" class="mir"><a href="/" title="Take Me Home">Project Title</a></h2>
+        <h4 id="slogan">This a pithy slogan</h4>
+            <ul id="globalNav">
+                <li><a href="" title="">Home</a></li>
+                <li><a href="" title="">About</a></li>
+                <li><a href="" title="">Help</a></li>
+            </ul>
+            <div id="searchBlock">
+                <form action="index_submit" method="post" accept-charset="utf-8">
+                    <dl>
+                    <dt><input type="text" name="search" value="" id="search"></dt>
+                    <dd><input type="submit" name="searchSubmit" value="Search" id="searchSubmit"></dd>
+                    </dl>
+                </form>
+            </div>
     </div>
+    <div id="navBlock" class="clearfix">
+        {% show_page_list %}
+    </div>
+    <div id="content" class="clearfix">
+        {% get_breadcrumb %}
+        <ul id="switcher">
+            <li>Columns:</li>
+            <li><a href="" title="Two Columns" class="layoutSwitch" id="twoColumns">2</a></li>
+            <li><a href="" title="Three Columns" class="layoutSwitch" id="threeColumns">3</a></li>
+            <li>Font Size:</li>
+            <li><a href="" title="Make Your Fonts Smaller" class="fontToggle" id="smaller">A</a></li>
+            <li><a href="" title="Make Your Fonts Bigger" class="fontToggle" id="bigger">A</a></li>
+        </ul>
+        
+        {% block content %}{% endblock %}
+        {% block sidebar %}{% endblock %}
+    </div>
+    </div>
+    
+    <div id="footer">
+            <ul class="nav">
+                <li><a href="" title="" class="" accesskey="m"><em>M</em>odule One</a></li>
+                <li><a href="" title="" class="" accesskey="o">M<em>o</em>dule Two</a></li>
+                <li><a href="" title="" class="" accesskey="d">Mo<em>d</em>ule Three</a></li>
+                <li><a href="" title="" class="" accesskey="u">Mod<em>u</em>le Four</a></li>
+                <li><a href="" title="" class="" accesskey="l">Modu<em>l</em>e Five</a></li>
+            </ul>
+            <div class="highlightBlocks clearfix">
+                <div class="footerBlock grid_4">
+                    <h4>I am a Title</h4>
+                    <ul class="objectBlock">
+                    <li><a href="">This is a list</a></li>
+                    <li><a href="">This is another lost</a></li>
+                    <li><a href="">I LOVE lists</a></li>
+                    </ul>
+                </div>
+                <div class="footerBlock grid_4">
+                    <h4>So Am I!</h4>
+                    <p class="objectBlock">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                </div>
+                <div class="footerBlock grid_4">
+                    <h4>What About Me?</h4>
+                    <p class="objectBlock">What did you say punk?</p>
+                </div>
+                <div class="footerBlock grid_4">
+                    <h4>Well, You Sure Are Cool!</h4>
+                </div>
+            </div>
+            <div class="objectBlock">
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+            </div>
+    </div>
+</div>
 </body>
 </html>

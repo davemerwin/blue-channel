@@ -1,0 +1,32 @@
+{% load page_tags %}
+
+<div id="loginBlock" class="moduleBlock">
+<h3 class="moduleToggle"><a href="" title="">Login To Program</a></h3>
+<form action="index_submit" method="post" accept-charset="utf-8" class="sidebarForm objectBlock">
+    <fieldset id="loginFields">
+        <legend>Account Login</legend>
+        <dl>
+            <dt><label for="username">Username</label></dt>
+            <dd><input type="text" name="username" value="" id="username"></dd>
+            <dt><label for="password">Password</label></dt>
+            <dd><input type="text" name="password" value="" id="password"></dd>
+            <dt><label for="login"></label></dt>
+            <dd><input type="submit" name="login" value="Submit" id="login"></dd>
+        </dl>
+    </fieldset>
+</form>
+<p><a href="" title="">Forget your password?</a></p>
+</div>
+
+<div id="email" class="moduleBlock">
+<h3 class="moduleToggle"><a href="" title="Toggle Email Signup">Email Sign Up</a></h3>
+<form action="index_submit" method="post" accept-charset="utf-8" class="objectBlock">
+    <dl>
+        <dt><label for="email_signup">Email</label></dt>
+        <dd><input type="text" name="email_signup" value="" id="email_signup"></dd>
+        <dd><input type="submit" value="Submit"></dd>
+        </dl>
+    </form>
+</div>
+    {% get_did_you_know %}
+    {% show_random_testimonial %}

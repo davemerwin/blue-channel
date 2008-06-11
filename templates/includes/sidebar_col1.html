@@ -1,0 +1,27 @@
+{% load page_tags %}
+
+<div id="meta" class="moduleBlock">
+    <h3 class="moduleToggle"><a href="" title="Toggle Meta">About This Content</a></h3>
+    <ul class="objectBlock">
+        <li>Author: {{ object.user }}</li>
+        <li>Date: {{ object.created }}</li>
+        <li>Tags: {{ object.tags }}</li>
+    </ul>
+</div>
+<div id="sub" class="moduleBlock">
+<h3 class="moduleToggle"><a href="" title="Toggle The Sub Menu">Module Sub Menu</a></h3>
+<ul id="subNav" class="objectBlock">
+    <li><a href="" title="" class="notmore">This is a Menu</a></li>
+    <li><a href="#" title="" class="more">Another Menu</a></li>
+    <li><a href="#" title="" class="more">Here is an Option</a></li>
+    <li><a href="#" title="" class="more">I am an Option</a></li>
+    <li><a href="" title="" class="notmore">This a Menu Item</a></li>
+    <li><a href="" title="" class="notmore">Read an Article</a></li>
+</ul>
+</div>
+<div id="related" class="moduleBlock">
+    <h3 class="moduleToggle"><a href="" title="Toggle The Related Items">Related Items</a></h3>
+    <ul class="objectBlock">
+        {{ object.similar_pages }}
+    </ul>
+</div>
