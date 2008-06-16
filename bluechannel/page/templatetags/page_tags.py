@@ -74,15 +74,26 @@ def show_page_list():
     """
     page_list = Page.objects.filter(in_nav=1)
     return {'page_list': page_list}
+    
+@register.inclusion_tag('includes/page_list_accessible.html')
+def show_page_list_accessible():
+    """
+    For creating a nav list
+    """
+    page_list = Page.objects.filter(in_nav=1)
+    return {'page_list': page_list}
 
 @register.inclusion_tag('includes/random_testimonial.html')
 def show_random_testimonial():
     """
     For generating a single piece of content from content tagged testimonial
     """
-    random_testimonial = Content.objects.filter(tags='testimonial').order_by('?')[0]
-    return {'random_testimonial': random_testimonial}
-    
+    random_testimonial = Content.objects.filter(tags='testimonial')
+    if random_testimonial != '':
+        return {'random_testimonial': random_testimonial}
+    else:
+        return 'Nothing Here'
+
 @register.inclusion_tag('includes/home_detail.html')
 def show_home_detail():
     """
@@ -110,7 +121,10 @@ def show_news_list():
 @register.inclusion_tag('includes/did_you_know.html')
 def get_did_you_know():
     """
-    For showing pages tagged with events
+    For showing content tagged with dyk (did you know)
     """
-    did_you_know = Content.objects.filter(tags='dyk').order_by('?')[0]
-    return {'did_you_know': did_you_know}
+    did_you_know = Content.objects.filter(tags='dyk').order_by('?')
+    if did_you_know != '':
+        return {'did_you_know': did_you_know}
+    else:
+        return ''

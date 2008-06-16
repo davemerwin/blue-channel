@@ -1,17 +1,17 @@
 {% extends "base.html" %}
 {% load markup page_tags %}
 
-{% block title %}{{ object.title }}{% endblock %}
+{% block title %}{{ home.title }}{% endblock %}
 {% block content %}
 <div id="pageContent" class="grid_8">
-    <h2>{{object.title}}</h2>
-    {% if object.media.all %}
-        {% for media in object.media.all %}
+    <h1>{{home.title}}</h1>
+    {% if home.media.all %}
+        {% for media in home.media.all %}
             <h2>{{media.name}}</h2>
             {{media.media_embed|safe}}
         {% endfor %}
     {% endif %}
-    {{object.main_content|markdown}}
+    {{home.main_content|markdown}}
 </div>
 {% endblock %}
 

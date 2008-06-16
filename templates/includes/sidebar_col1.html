@@ -3,7 +3,7 @@
 <div id="meta" class="moduleBlock">
     <h3 class="moduleToggle"><a href="" title="Toggle Meta">About This Content</a></h3>
     <ul class="objectBlock">
-        <li>Author: {{ object.user }}</li>
+        <li>Author: {{ object.author }}</li>
         <li>Date: {{ object.created }}</li>
         <li>Tags: {{ object.tags }}</li>
     </ul>
@@ -19,9 +19,13 @@
     <li><a href="" title="" class="notmore">Read an Article</a></li>
 </ul>
 </div>
-<div id="related" class="moduleBlock">
-    <h3 class="moduleToggle"><a href="" title="Toggle The Related Items">Related Items</a></h3>
-    <ul class="objectBlock">
-        {{ object.similar_pages }}
-    </ul>
-</div>
+{% if object.similar_pages.all %}
+    <div id="related" class="moduleBlock">
+        <h3 class="moduleToggle"><a href="" title="Toggle The Related Items">Related Items</a></h3>
+        <ul class="objectBlock">
+            {% for sim_page in object.similar_pages.all %}
+                <li><a href="{{ sim_page.get_absolute_url }}" title="{{ sim_page.title }}">{{sim_page.title}}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endif %}

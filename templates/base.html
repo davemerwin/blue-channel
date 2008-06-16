@@ -18,8 +18,8 @@
     <script type="text/javascript" src="{{ MEDIA_URL }}js/site.settings.js"></script>
 </head>
 <body>
-<div id="wrap" class="container_16">
     <div id="masthead" class="">
+        <div class="wrap container_16">
         <h2 id="projectTitle" class="mir"><a href="/" title="Take Me Home">Project Title</a></h2>
         <h4 id="slogan">This a pithy slogan</h4>
             <ul id="globalNav">
@@ -35,33 +35,33 @@
                     </dl>
                 </form>
             </div>
+        </div>
     </div>
     <div id="navBlock" class="clearfix">
-        {% show_page_list %}
+        <div class="wrap container_16">
+            {% show_page_list_accessible %}
+        </div>
     </div>
     <div id="content" class="clearfix">
-        <ul id="switcher">
-            <li>Columns:</li>
-            <li><a href="" title="Two Columns" class="layoutSwitch" id="twoColumns">2</a></li>
-            <li><a href="" title="Three Columns" class="layoutSwitch" id="threeColumns">3</a></li>
-            <li>Font Size:</li>
-            <li><a href="" title="Make Your Fonts Smaller" class="fontToggle" id="smaller">A</a></li>
-            <li><a href="" title="Make Your Fonts Bigger" class="fontToggle" id="bigger">A</a></li>
-        </ul>
-        
+        <div class="wrap container_16">
+        <div id="breadcrumbBlock">
+            <ul id="switcher">
+                <li>Columns:</li>
+                <li><a href="" title="Two Columns" class="layoutSwitch" id="twoColumns">2</a></li>
+                <li><a href="" title="Three Columns" class="layoutSwitch" id="threeColumns">3</a></li>
+                <li>Font Size:</li>
+                <li><a href="" title="Make Your Fonts Smaller" class="fontToggle" id="smaller">A</a></li>
+                <li><a href="" title="Make Your Fonts Bigger" class="fontToggle" id="bigger">A</a></li>
+            </ul>
+        </div>
         {% block content %}{% endblock %}
         {% block sidebar %}{% endblock %}
-    </div>
+        </div>
     </div>
     
     <div id="footer">
-            <ul class="nav">
-                <li><a href="" title="" class="" accesskey="m"><em>M</em>odule One</a></li>
-                <li><a href="" title="" class="" accesskey="o">M<em>o</em>dule Two</a></li>
-                <li><a href="" title="" class="" accesskey="d">Mo<em>d</em>ule Three</a></li>
-                <li><a href="" title="" class="" accesskey="u">Mod<em>u</em>le Four</a></li>
-                <li><a href="" title="" class="" accesskey="l">Modu<em>l</em>e Five</a></li>
-            </ul>
+        <div class="wrap container_16">
+             {% show_page_list %}
             <div class="highlightBlocks clearfix">
                 <div class="footerBlock grid_4">
                     <h4>I am a Title</h4>
@@ -86,7 +86,7 @@
             <div class="objectBlock">
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
             </div>
+        </div>
     </div>
-</div>
 </body>
 </html>

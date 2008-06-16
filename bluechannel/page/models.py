@@ -107,7 +107,7 @@ class Page(models.Model):
     template = models.ForeignKey(Template)
     extra_content = models.ManyToManyField(Content, blank=True, related_name='extra_content')
     content_hilight = models.ManyToManyField(Content, blank=True, related_name='content_hilight')
-    event = models.ForeignKey(Event, blank=True)
+    event = models.ManyToManyField(Event, blank=True)
     media = models.ManyToManyField(Media, blank=True)
     created = models.DateTimeField(default=datetime.now)
     modified = models.DateTimeField(default=datetime.now)
@@ -125,7 +125,7 @@ class Page(models.Model):
 
     class Admin:
         save_on_top = True
-        list_display = ('title', 'parent', 'status', 'summary', 'template', 'author', 'modified')
+        list_display = ('title', 'parent', 'status', 'summary', 'template', 'author', 'modified', 'in_nav')
         list_filter = ('author','template','status','in_nav')
 
     def save(self):

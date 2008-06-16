@@ -22,7 +22,7 @@ urlpatterns = patterns('',
     #(r'(?P<slug>[-\w]+)/$', 'bluechannel.page.views.published_page'),
     #(r'(?P<slug>[-\w]+)/$', object_detail, info_dict),    
     #for homepage - testing
-    (r'^$', direct_to_template, {'template': 'page/homepage.html'}),
+    (r'^$', 'bluechannel.page.views.home'),
     
     # Creates Site Maps
     # (r'^sitemap.xml$', 'django.contrib.sitemaps.views.sitemap', {'sitemaps': sitemaps})

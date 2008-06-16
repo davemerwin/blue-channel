@@ -1,5 +1,9 @@
 from django.views.generic.list_detail import *
 from bluechannel.page.models import *
+from django.shortcuts import render_to_response
+from django.template import Context, Template, RequestContext
+from django.views.generic.list_detail import object_list, object_detail
+from django.http import Http404, HttpResponseRedirect
 
 # see docs for how to grab the template view. Pretty straight forward
 
@@ -15,3 +19,14 @@ def published_page(request, slug):
 def detail(request, slug):
     return object_detail(request, slug=slug, queryset=Page.published_objects.all())
     
+def home(request):
+    try:
+        home = Page.published_objects.get(is_home=True)
+    except Home.DoesNotExist:
+        raise Http404, "Sorry, the page you requested was not found."
+        
+    return render_to_response(
+        'page/homepage.html',
+        {'home': home,},
+        context_instance=RequestContext(request)
+    )

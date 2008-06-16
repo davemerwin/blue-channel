@@ -4,7 +4,7 @@
 {% block title %}{{ object.title }}{% endblock %}
 {% block content %}
 <div id="pageContent" class="grid_8">
-    <h2>{{object.title}}</h2>
+    <h1>{{object.title}}</h1>
     {% if object.media.all %}
         {% for media in object.media.all %}
             <h2>{{media.name}}</h2>
