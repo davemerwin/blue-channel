@@ -1,6 +1,7 @@
 from datetime import datetime
 from django.db import models
-import tagging
+# import tagging
+from bluechannel.tag.models import Tag
 
 class Type(models.Model):
     name = models.CharField(max_length=200)
@@ -37,6 +38,7 @@ class Media(models.Model):
     created = models.DateTimeField(default=datetime.now)
     modified = models.DateTimeField(default=datetime.now)
     display = models.BooleanField(default=True)
+	tags = models.ManyToManyField(Tag)
     
     class Meta:
         verbose_name_plural = ('Media')

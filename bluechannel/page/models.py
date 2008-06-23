@@ -1,9 +1,10 @@
 from datetime import datetime
-from tagging.fields import TagField
+#from tagging.fields import TagField
 from django.db import models
 from django.contrib.auth.models import User
-from bluechannel.media.models import *
+from bluechannel.media.models import Media
 from bluechannel.layout.models import *
+from bluechannel.tag.models import Tag
 
 class Content(models.Model):
     """
@@ -19,7 +20,8 @@ class Content(models.Model):
     status = models.CharField(max_length=20, choices=CONTENT_STATUS)
     created = models.DateTimeField(default=datetime.now)
     modified = models.DateTimeField(default=datetime.now)
-    tags = TagField()
+    #tags = TagField()
+	tags = models.ManyToManyField(Tag)
     
     def __unicode__(self):
         return self.name
@@ -70,7 +72,8 @@ class Event(models.Model):
     created = models.DateTimeField(editable=False)
     modified = models.DateTimeField(editable=False)
     slug = models.SlugField(prepopulate_from=("name",))
-    tags = TagField()
+    # tags = TagField()
+	tags = models.ManyToManyField(Tag)
     enable_comments = models.BooleanField(default=True)
 
     class Admin:
@@ -119,7 +122,8 @@ class Page(models.Model):
     is_home = models.BooleanField(default=False, blank=True, help_text=("Is this the site's homepage?"))
     in_site_map = models.BooleanField(default=True)
     has_next = models.BooleanField(default=False, help_text=("Does this page have a next page?"))
-    tags = TagField()
+    # tags = TagField()
+	tags = models.ManyToManyField(Tag)
     objects = models.Manager() # The default manager.
     published_objects = PublishedPageManager() # Only published pages
 
