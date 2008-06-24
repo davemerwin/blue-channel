@@ -22,8 +22,8 @@ def detail(request, slug):
 def home(request):
     try:
         home = Page.published_objects.get(is_home=True)
-    except Home.DoesNotExist:
-        raise Http404, "Sorry, the page you requested was not found."
+    except Page.DoesNotExist:
+	home = None
         
     return render_to_response(
         'page/homepage.html',
