@@ -38,7 +38,7 @@ class Media(models.Model):
 	created = models.DateTimeField(default=datetime.now)
 	modified = models.DateTimeField(default=datetime.now)
 	display = models.BooleanField(default=True)
-	tags = models.ManyToManyField(Tag)
+	tags = models.ManyToManyField(Tag, blank=True)
 	
 	class Meta:
 		verbose_name_plural = ('Media')

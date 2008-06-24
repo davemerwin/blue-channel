@@ -92,6 +92,7 @@ INSTALLED_APPS = (
     'django.contrib.sitemaps',
     'django.contrib.syndication',
     'bluechannel.media',
+	'bluechannel.layout',
     'bluechannel.profiles',
     'bluechannel.page',
 	'bluechannel.tag',

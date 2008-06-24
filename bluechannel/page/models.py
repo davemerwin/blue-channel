@@ -21,7 +21,7 @@ class Content(models.Model):
 	created = models.DateTimeField(default=datetime.now)
 	modified = models.DateTimeField(default=datetime.now)
 	#tags = TagField()
-	tags = models.ManyToManyField(Tag)
+	tags = models.ManyToManyField(Tag, blank=True)
 	
 	def __unicode__(self):
 		return self.name
@@ -73,7 +73,7 @@ class Event(models.Model):
 	modified = models.DateTimeField(editable=False)
 	slug = models.SlugField(prepopulate_from=("name",))
 	# tags = TagField()
-	tags = models.ManyToManyField(Tag)
+	tags = models.ManyToManyField(Tag, blank=True)
 	enable_comments = models.BooleanField(default=True)
 
 	class Admin:
@@ -102,6 +102,7 @@ class Page(models.Model):
 		('publish', 'Publish')
 	)
 	title = models.CharField(max_length=200)
+	page_title = models.CharField(blank=True, max_length=200, help_text=("Use the Page Title if you want the Title of the page to be different than the Title. For Example... Title: About. Page Title: About Our Company."))
 	slug = models.SlugField(prepopulate_from=('title',))
 	parent = models.ForeignKey('self', blank=True, null=True, related_name='child')
 	status = models.CharField(max_length=20, choices=PAGE_STATUS)
@@ -123,13 +124,13 @@ class Page(models.Model):
 	in_site_map = models.BooleanField(default=True)
 	has_next = models.BooleanField(default=False, help_text=("Does this page have a next page?"))
 	# tags = TagField()
-	tags = models.ManyToManyField(Tag)
+	tags = models.ManyToManyField(Tag, blank=True)
 	objects = models.Manager() # The default manager.
 	published_objects = PublishedPageManager() # Only published pages
 
 	class Admin:
 		save_on_top = True
-		list_display = ('title', 'parent', 'status', 'summary', 'template', 'author', 'modified', 'in_nav')
+		list_display = ('title', 'page_title', 'parent', 'status', 'summary', 'template', 'author', 'modified', 'in_nav')
 		list_filter = ('author','template','status','in_nav')
 
 	def save(self):
