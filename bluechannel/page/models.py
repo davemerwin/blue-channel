@@ -104,6 +104,7 @@ class Page(models.Model):
 	title = models.CharField(max_length=200)
 	page_title = models.CharField(blank=True, max_length=200, help_text=("Use the Page Title if you want the Title of the page to be different than the Title. For Example... Title: About. Page Title: About Our Company."))
 	slug = models.SlugField(prepopulate_from=('title',))
+	page_type = models.ForeignKey(Type)
 	parent = models.ForeignKey('self', blank=True, null=True, related_name='child')
 	status = models.CharField(max_length=20, choices=PAGE_STATUS)
 	main_content = models.TextField(blank=True, help_text=("You can use Markdown to format your text. To see the syntax go here: http://daringfireball.net/projects/markdown/syntax"))
@@ -130,8 +131,8 @@ class Page(models.Model):
 
 	class Admin:
 		save_on_top = True
-		list_display = ('title', 'page_title', 'parent', 'status', 'summary', 'template', 'author', 'modified', 'in_nav')
-		list_filter = ('author','template','status','in_nav')
+		list_display = ('title', 'page_title', 'page_type', 'parent', 'status', 'summary', 'template', 'author', 'modified', 'in_nav')
+		list_filter = ('status', 'in_nav', 'page_type')
 
 	def save(self):
 		if not self.id:
