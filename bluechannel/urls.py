@@ -31,6 +31,6 @@ urlpatterns = patterns('',
 # For Static Content Locally - Do Not Use In Production!
 if settings.DEBUG:
     urlpatterns += patterns('', 
-        (r'^media/(.*)$', 'django.views.static.serve', {'document_root': 'Users/dave/sandbox/media/'})
+        (r'^media/(.*)$', 'django.views.static.serve', {'document_root': '/Users/dave/sandbox/blue-channel/media/'})
     )
 
