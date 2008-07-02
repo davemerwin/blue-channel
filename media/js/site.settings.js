@@ -60,12 +60,26 @@ $(document).ready(function(){
         $('#pageContent').addClass('grid_8');
         return false;
     });
+
     
     // Footer Equal Column Heights
     var columns = $('.highlightBlocks').height();
     $('.highlightBlocks').children('div').height(columns);
 
-	// Unobtrusive Printing - Thanks 456 Berra Street - http://tinyurl.com/2ela69
+	// For Adding Features... Printing, Font Resizing, Column Switches, Contrast Switch... etc
+	// For adding the Column Switcher
+	$('#featureBlock').append('<ul id="switcher"><li>Columns:</li><li><a href="" title="Two Columns" class="layoutSwitch" id="twoColumns">2</a></li><li><a href="" title="Three Columns" class="layoutSwitch" id="threeColumns">3</a></li></ul>');
 	
+	// For Adding Print Page
+	$('#featureBlock').append('<a href="javascript:window.print();" class="printPage">Print This Page</a>');
+
+	//Add the Font Switcher
+	/*$('#featureBlock').append('
+	<ul id="fontSizer">
+		<li>Font Size:</li>
+		<li><a href="" title="Make Your Fonts Smaller" class="fontToggle" id="smaller">A</a></li>
+	    <li><a href="" title="Make Your Fonts Bigger" class="fontToggle" id="bigger">A</a></li>
+	</ul>
+	');*/
 	
 });

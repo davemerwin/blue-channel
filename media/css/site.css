@@ -34,7 +34,7 @@ body {color:#444444; background:#E6E6E6;}
 
 #content {background:#fff;}
 #content .wrap {padding:0 0 20px 0;}
-#breadcrumbBlock {height:36px; position:relative;}
+#featureBlock {height:36px; position:relative; line-height:36px;}
 .objectBlock {padding:10px; margin:0 0 10px 0;}
 .moduleBlock {margin:0 0 10px 0; background:#F3F3F3;}
 

@@ -11,7 +11,7 @@
             {{media.media_embed|safe}}
         {% endfor %}
     {% endif %}
-    {{object.main_content|safe}}
+    {{object.main_content|markdown}}
 </div>
 {% endblock %}
 
