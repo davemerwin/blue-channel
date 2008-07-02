@@ -64,4 +64,8 @@ $(document).ready(function(){
     // Footer Equal Column Heights
     var columns = $('.highlightBlocks').height();
     $('.highlightBlocks').children('div').height(columns);
+
+	// Unobtrusive Printing - Thanks 456 Berra Street - http://tinyurl.com/2ela69
+	
+	
 });
