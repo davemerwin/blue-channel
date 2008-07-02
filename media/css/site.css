@@ -65,13 +65,15 @@ body {color:#444444; background:#E6E6E6;}
 #subNav li {padding:0; margin:0; list-style:none;}
 #subNav ul ul {}
 
+#pageContent {overflow:hidden; padding:0 0 40px 0;}
+
 /* =Typography
 ----------------------------------------------------------------------------*/
 a {color:#1A1A1A; text-decoration:none; font-weight:bold;}
 a:visited {color:#000;}
-a:hover {color:#333333;}
+a:hover {color:#A6A6A6;}
 
-#projectTitle {width:417px; height:66px; background:url(../img/starterKit_logo.png) top left no-repeat; position:absolute; top:20px; left:20px;}
+#projectTitle {width:455px; height:66px; background:url(../img/starterKit_logo.png) top left no-repeat; position:absolute; top:20px; left:20px;}
 #projectTitle a {width:417px; height:66px; display:block;}
 #slogan {position:absolute; top:85px; left:20px;}
 
@@ -84,7 +86,8 @@ a:hover {color:#333333;}
 #navBlock .nav li a:hover {background:#BFBFBF; color:#000;}
 
 #subNav li {padding:2px 5px;}
-
+#subNav li a {display:block; padding:2px 4px;}
+#subNav li a:hover {background:#333; color:#A6A6A6;}
 #sidebar h3 {margin:0; padding:2px 6px; font-size:100%; background:#BFBFBF; text-transform:uppercase;}
 
 #login p {text-align:center;}

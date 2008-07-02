@@ -101,3 +101,4 @@ def recurse_for_children(menu, req_page, all_parents, cur_nav, level, max_depth=
 
         if not recurse_for_children(new_menu, req_page, all_parents, c, level+1):
             new_menu = menu
+    )

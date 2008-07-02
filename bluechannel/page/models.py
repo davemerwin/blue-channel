@@ -132,7 +132,7 @@ class Page(models.Model):
 	class Admin:
 		save_on_top = True
 		list_display = ('title', 'page_title', 'page_type', 'parent', 'status', 'summary', 'template', 'author', 'modified', 'in_nav')
-		list_filter = ('status', 'in_nav', 'page_type')
+		list_filter = ('status', 'in_nav', 'page_type', 'parent')
 
 	def save(self):
 		if not self.id:
@@ -165,4 +165,4 @@ class Page(models.Model):
 	def get_all_siblings(self):
 		"Gets siblings of current page only, no children of siblings."
 		return Page.objects.filter(parent=self.parent)
-		return "/%i/" % (self.slug)
+		#return "/%i/" % (self.slug)
