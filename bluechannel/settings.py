@@ -34,6 +34,8 @@ SITE_ID = 1
 # to load the internationalization machinery.
 USE_I18N = True
 
+AUTH_PROFILE_MODULE = 'accounts.profile'
+
 # Absolute path to the directory that holds media.
 # Example: "/home/media/media.lawrence.com/"
 MEDIA_ROOT = ''
@@ -93,10 +95,10 @@ INSTALLED_APPS = (
     'django.contrib.syndication',
     'bluechannel.media',
 	'bluechannel.layout',
-    'bluechannel.profiles',
+    'bluechannel.accounts',
     'bluechannel.page',
-	'bluechannel.tag',
-    # 'voting',
+    'voting',
+    'tagging',
     'template_utils',
     'comment_utils',
 )
