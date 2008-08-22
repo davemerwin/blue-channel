@@ -67,6 +67,8 @@ body {color:#444444; background:#E6E6E6;}
 
 #pageContent {overflow:hidden; padding:0 0 40px 0;}
 
+#markdownPreview {background:#fff; padding:10px;}
+
 /* =Typography
 ----------------------------------------------------------------------------*/
 a {color:#1A1A1A; text-decoration:none; font-weight:bold;}

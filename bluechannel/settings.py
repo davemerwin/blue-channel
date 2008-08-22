@@ -97,6 +97,7 @@ INSTALLED_APPS = (
 	'bluechannel.layout',
     'bluechannel.accounts',
     'bluechannel.page',
+    'bluechannel.utils',
     'voting',
     'tagging',
     'template_utils',
