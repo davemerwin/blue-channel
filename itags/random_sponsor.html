@@ -1,0 +1,14 @@
+{% if random_sponsor %}
+<h3>Our Sponsors</h3>
+<div class="sponsorBlock">
+    {% if random_sponsor.logo %}
+        <img src="{{random_sponsor.get_logo_url}}" alt="{{random_sponsor.title}}">
+    {% else %}
+        <h4>{{random_sponsor.name}}</h4>
+    {% endif %}
+    {% if random_sponsor.logo %}
+        <img src="/media/{{random_sponsor.get_logo_url}}" alt="{{random_sponsor.name}}">
+    {% endif %}
+    {{random_sponsor.description}}
+</div>
+{% endif %}

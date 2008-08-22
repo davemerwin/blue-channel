@@ -1,0 +1,93 @@
+{% load page_tags %}
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
+
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>{% block title %}{% endblock %} Eugene Marathon</title>
+    <meta name="author" content="Dave Merwin">
+    <meta name="keywords" content="TO BE ADDED">
+    <meta name="description" content="TO BE ADDED">
+    
+    <link rel="stylesheet" type="text/css" media="screen" href="{{ MEDIA_URL }}css/site.css">
+    <link rel="stylesheet" type="text/css" media="print" href="{{ MEDIA_URL }}css/print.css">
+    
+    <script type="text/javascript" src="{{ MEDIA_URL }}js/jquery-1.2.6.min.js"></script>
+    <script type="text/javascript" src="{{ MEDIA_URL }}js/site.settings.js"></script>
+</head>
+<body {% block bodyId %}{% endblock %}>
+    {% block measthead %}
+        <div id="masthead" class="">
+            <div class="wrap container_16">
+            <h2 id="projectTitle" class="mir"><a href="/" title="Take Me Home">Eugene Marathon</a></h2>
+            <h4 id="slogan">Running in the footsteps of legends</h4>
+                {% block globalNav %}{% endblock %}
+                {% block searchBlock %}
+
+                {% endblock %}
+            </div>
+        </div>
+        {% block navBlock %}
+            <div id="navBlock" class="clearfix">
+                <div class="wrap container_16">
+                    {% show_page_list_accessible %}
+                </div>
+            </div>
+        {% endblock %}
+    {% endblock %}
+    {% block content %}
+        <div id="content" class="clearfix">
+            <div class="wrap container_16">
+            <div id="photoImageSlider">
+                
+            </div>
+            {% block featureBlock %}
+            {% endblock %}
+            {% block pageContent %}{% endblock %}
+            {% block sidebar %}{% endblock %}
+            </div>
+        </div>
+    {% endblock %}
+    
+    {% block footerHighlights %}
+    <!-- <div id="highlights">
+        <div class="highlightBlocks container_16 clearfix">
+            <div class="footerBlock grid_4">
+                <h4>Did You Know?</h4>
+                <div class="objectBlock">
+                    {% get_did_you_know %}
+                </div>
+            </div>
+            <div class="footerBlock grid_8">
+                <h4>Testimonials</h4>
+                <div class="objectBlock">
+                    {% show_random_testimonial %}
+                </div>
+            </div>
+            <div class="footerBlock grid_4">
+                <h4>About Eugene Marathon</h4>
+                <div class="objectBlock">
+                    {% about_blurb %}
+                </div>
+            </div>
+        </div>
+    </div>-->
+    {% endblock %}
+    
+    
+    {% block footer %}
+        <div id="footer">
+            {% block footerNav %}
+                {% show_page_list %}
+            {% endblock %}
+            <div class="wrap container_16">
+                    <div class="objectBlock">
+                        <p></p>
+                    </div>
+            </div>
+        </div>
+    {% endblock %}
+</body>
+</html>

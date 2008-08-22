@@ -1,0 +1,12 @@
+{% load markup %}
+{% if news_list %}
+<h3>Latest News</h3>
+    <ul id="newsList" class="neList objectBlock">
+        {% for news in news_list %}
+            <li>
+                <h3 class="sidebarContentTitle"><a href="{{ news.get_absolute_url }}" title="{{ news.title }}">{{news.title}}</a></h3>
+                {{news.main_content|truncatewords_html:"20"|markdown}}
+            </li>
+        {% endfor %}
+    </ul>
+{% endif %}

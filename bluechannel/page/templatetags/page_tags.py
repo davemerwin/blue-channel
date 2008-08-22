@@ -1,6 +1,5 @@
 from django import template
 from bluechannel.page.models import Page, Content
-from bluechannel.sponsor.models import Sponsor, SponsorType
 
 register = template.Library()
 

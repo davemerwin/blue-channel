@@ -1,0 +1,42 @@
+{% load page_tags %}
+
+    {% if object.type.blog %}
+    <div id="meta" class="moduleBlock">
+            <h3 class="moduleToggle">About This Content</h3>
+            <ul class="objectBlock">
+                <li>Author: {{ object.author }}</li>
+                <li>Date: {{ object.created }}</li>
+                <li>Tags: {{ object.tags }}</li>
+            </ul>
+        </div>
+    {% endif %}
+    {% if object.get_children %}
+    <div id="sub" class="moduleBlock">
+    <h3 class="moduleToggle">Sub Menu</h3>
+        <ul id="subNav" class="objectBlock">    
+        {% for children in object.get_children %}
+            <li><a href="{{children.get_absolute_url}}" title="{{children.title}}">{{children.title}}</a></li>
+        {% endfor %}
+        </ul>
+    </div>
+    {% endif %}
+{% if home.similar_pages.all %}
+    <div id="related" class="moduleBlock">
+        <h3 class="moduleToggle">Related Items</h3>
+        <ul class="objectBlock">
+            {% for sim_page in home.similar_pages.all %}
+                <li><a href="{{ sim_page.get_absolute_url }}" title="{{ sim_page.title }}">{{sim_page.title}}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endif %}
+{% if object.similar_pages.all %}
+    <div id="related" class="moduleBlock">
+        <h3 class="moduleToggle">Related Items</h3>
+        <ul class="objectBlock">
+            {% for sim_page in object.similar_pages.all %}
+                <li><a href="{{ sim_page.get_absolute_url }}" title="{{ sim_page.title }}">{{sim_page.title}}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endif %}
