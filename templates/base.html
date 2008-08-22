@@ -6,7 +6,7 @@
 <html lang="en">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>{% block title %}{% endblock %}</title>
+    <title>{% block title %}{% endblock %} Eugene Marathon</title>
     <meta name="author" content="Dave Merwin">
     <meta name="keywords" content="TO BE ADDED">
     <meta name="description" content="TO BE ADDED">
@@ -17,28 +17,15 @@
     <script type="text/javascript" src="{{ MEDIA_URL }}js/jquery-1.2.6.min.js"></script>
     <script type="text/javascript" src="{{ MEDIA_URL }}js/site.settings.js"></script>
 </head>
-<body>
+<body {% block bodyId %}{% endblock %}>
     {% block measthead %}
         <div id="masthead" class="">
             <div class="wrap container_16">
-            <h2 id="projectTitle" class="mir"><a href="/" title="Take Me Home">Project Title</a></h2>
-            <h4 id="slogan">This a pithy slogan</h4>
-                {% block globalNav %}
-                    <ul id="globalNav">
-                        <li><a href="/" title="">Home</a></li>
-                        <li><a href="/about/" title="">About</a></li>
-                        <!-- <li><a href="/help/" title="">Help</a></li>-->
-                    </ul>
-                {% endblock %}
+            <h2 id="projectTitle" class="mir"><a href="/" title="Take Me Home">Eugene Marathon</a></h2>
+            <h4 id="slogan">Running in the footsteps of legends</h4>
+                {% block globalNav %}{% endblock %}
                 {% block searchBlock %}
-                <div id="searchBlock">
-                    <form action="index_submit" method="post" accept-charset="utf-8">
-                        <dl>
-                        <dt><input type="text" name="search" value="" id="search"></dt>
-                        <dd><input type="submit" name="searchSubmit" value="Search" id="searchSubmit"></dd>
-                        </dl>
-                    </form>
-                </div>
+
                 {% endblock %}
             </div>
         </div>
@@ -53,10 +40,10 @@
     {% block content %}
         <div id="content" class="clearfix">
             <div class="wrap container_16">
+            <div id="photoImageSlider">
+                
+            </div>
             {% block featureBlock %}
-                <div id="featureBlock">
-                    
-                </div>
             {% endblock %}
             {% block pageContent %}{% endblock %}
             {% block sidebar %}{% endblock %}
@@ -64,38 +51,41 @@
         </div>
     {% endblock %}
     
+    {% block footerHighlights %}
+    <!-- <div id="highlights">
+        <div class="highlightBlocks container_16 clearfix">
+            <div class="footerBlock grid_4">
+                <h4>Did You Know?</h4>
+                <div class="objectBlock">
+                    {% get_did_you_know %}
+                </div>
+            </div>
+            <div class="footerBlock grid_8">
+                <h4>Testimonials</h4>
+                <div class="objectBlock">
+                    {% show_random_testimonial %}
+                </div>
+            </div>
+            <div class="footerBlock grid_4">
+                <h4>About Eugene Marathon</h4>
+                <div class="objectBlock">
+                    {% about_blurb %}
+                </div>
+            </div>
+        </div>
+    </div>-->
+    {% endblock %}
+    
+    
     {% block footer %}
         <div id="footer">
+            {% block footerNav %}
+                {% show_page_list %}
+            {% endblock %}
             <div class="wrap container_16">
-                {% block footerNav %}
-                    {% show_page_list %}
-                {% endblock %}
-                {% block footerHighlights %}
-                    <div class="highlightBlocks clearfix">
-                        <div class="footerBlock grid_4">
-                            <h4>From The Blog</h4>
-                            <ul class="objectBlock">
-                            <li><a href="">This is a list</a></li>
-                            <li><a href="">This is another lost</a></li>
-                            <li><a href="">I LOVE lists</a></li>
-                            </ul>
-                        </div>
-                        <div class="footerBlock grid_4">
-                            <h4>Did You Know</h4>
-                            {% get_did_you_know %}
-                        </div>
-                        <div class="footerBlock grid_4">
-                            <h4>About Me</h4>
-                            <p class="objectBlock">What did you say punk?</p>
-                        </div>
-                        <div class="footerBlock grid_4">
-                            <h4>Tags</h4>
-                        </div>
-                    </div>
                     <div class="objectBlock">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                        <p></p>
                     </div>
-                {% endblock %}
             </div>
         </div>
     {% endblock %}

@@ -1,32 +1,29 @@
 {% extends "base.html" %}
 {% load markup page_tags %}
 
-{% block title %}{{ object.title }}{% endblock %}
-{% block content %}
-<div id="content" class="clearfix">
-    <div class="wrap container_16">
-        {% block pageContent %}
-            <div id="pageContent" class="grid_8">
-                <h1>{{object.title}}</h1>
-                {% if object.media.all %}
-                    {% for media in object.media.all %}
-                        <h2>{{media.name}}</h2>
-                        {{media.media_embed|safe}}
-                    {% endfor %}
-                {% endif %}
-                {{object.main_content|markdown}}
-            </div>
-        {% endblock %}
-        {% block sidebar %}
-            <div id="sidebar" class="grid_8">
-                <div class="grid_4 alpha">
-                    {% include "includes/sidebar_col1.html" %}
-                </div>
-                <div class="grid_4 omega">
-                    {% include "includes/sidebar_col2.html" %}
-                </div>
-            </div>
-        {% endblock %}
+{% block title %}{{ object.title }} |{% endblock %}
+
+{% block bodyId %}id = "{% if object.parent %}{{object.parent.slug}}{% else %}{{object.slug}}{% endif %}"{% endblock %}
+
+{% block pageContent %}
+    <div id="pageContent" class="grid_8">
+        <h1 class="pageTitle">{{object.title}}</h1>
+        {% if object.media.all %}
+            {% for media in object.media.all %}
+                <h2>{{media.name}}</h2>
+                {{media.media_embed|safe}}
+            {% endfor %}
+        {% endif %}
+        {{object.main_content|markdown}}
     </div>
-</div>
+{% endblock %}
+{% block sidebar %}
+    <div id="sidebar" class="grid_8">
+        <div class="grid_4 alpha">
+            {% include "includes/sidebar_col1.html" %}
+        </div>
+        <div class="grid_4 omega">
+            {% include "includes/sidebar_col2.html" %}
+        </div>
+    </div>
 {% endblock %}
