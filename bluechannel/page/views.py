@@ -21,7 +21,7 @@ def detail(request, slug):
     
 def home(request):
     try:
-        home = Page.published_objects.get(is_home=True)
+        home = Page.published_objects.get(is_home=1)
     except Page.DoesNotExist:
 	home = None
         

@@ -1,5 +1,6 @@
 from django import template
 from bluechannel.page.models import Page, Content
+from bluechannel.sponsor.models import Sponsor, SponsorType
 
 register = template.Library()
 
@@ -67,7 +68,7 @@ class BreadcrumbNode(template.Node):
 
 		register = template.Library()
 
-@register.inclusion_tag('includes/page_list.html')
+@register.inclusion_tag('itags/page_list.html')
 def show_page_list():
 	"""
 	For creating a nav list
@@ -75,7 +76,15 @@ def show_page_list():
 	page_list = Page.objects.filter(in_nav=1)
 	return {'page_list': page_list}
 	
-@register.inclusion_tag('includes/page_list_accessible.html')
+@register.inclusion_tag('itags/about_blurb.html')
+def about_blurb():
+	"""
+	For creating a nav list
+	"""
+	about_blub = Content.objects.filter(tags='about-blurb')
+	return {'about_blurb': about_blurb}
+	
+@register.inclusion_tag('itags/page_list_accessible.html')
 def show_page_list_accessible():
 	"""
 	For creating a nav list
@@ -83,7 +92,7 @@ def show_page_list_accessible():
 	page_list = Page.objects.filter(in_nav=1)
 	return {'page_list': page_list}
 
-@register.inclusion_tag('includes/random_testimonial.html')
+@register.inclusion_tag('itags/random_testimonial.html')
 def show_random_testimonial():
 	"""
 	For generating a single piece of content from content tagged testimonial
@@ -94,23 +103,35 @@ def show_random_testimonial():
 	else:
 		return 'Nothing Here'
 
-@register.inclusion_tag('includes/home_detail.html')
+@register.inclusion_tag('itags/home_detail.html')
 def show_home_detail():
 	"""
 	For generating a single piece of content from pages
 	"""
-	home_detail = Page.objects.filter(tags='home').order_by('created')[0]
-	return {'home_detail': home_detail}
+	home_detail = Page.objects.filter(is_home=1)
+    
+	if home_detail != '':
+	    return {'home_detail': home_detail}
+	else:
+	    return ''
 
-@register.inclusion_tag('includes/events_list.html')
+@register.inclusion_tag('itags/events_list.html')
 def show_events_list():
 	"""
 	For showing pages tagged with events
 	"""
 	events_list = Page.objects.filter(tags='events').order_by('-created')
 	return {'events_list': events_list}
+	
+@register.inclusion_tag('itags/blog_list.html')
+def show_blog_list():
+	"""
+	For showing pages tagged with events
+	"""
+	blog_list = Page.objects.filter(page_type=3).order_by('-created')[:4]
+	return {'blog_list': blog_list}
 
-@register.inclusion_tag('includes/news_list.html')
+@register.inclusion_tag('itags/news_list.html')
 def show_news_list():
 	"""
 	For showing pages tagged with events
@@ -118,7 +139,7 @@ def show_news_list():
 	news_list = Page.objects.filter(tags='news').order_by('-created')
 	return {'news_list': news_list}
 	
-@register.inclusion_tag('includes/did_you_know.html')
+@register.inclusion_tag('itags/did_you_know.html')
 def get_did_you_know():
 	"""
 	For showing content tagged with dyk (did you know)
@@ -129,11 +150,11 @@ def get_did_you_know():
 	else:
 		return ''
 
-@register.inclusion_tag('includes/sub_menu.html')
+@register.inclusion_tag('itags/sub_menu.html')
 def get_submenu():
 	"""
 	Show Siblings of the current page and all children
 	"""	
-	siblings = Page.get_all_siblings()
+	siblings = Page.get_children()
 	#children = Page.objects.filter(parent=self.id)
 	return {'siblings': siblings}

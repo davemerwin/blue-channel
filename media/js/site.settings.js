@@ -68,7 +68,7 @@ $(document).ready(function(){
 
 	// For Adding Features... Printing, Font Resizing, Column Switches, Contrast Switch... etc
 	// For adding the Column Switcher
-	$('#featureBlock').append('<ul id="switcher"><li>Columns:</li><li><a href="" title="Two Columns" class="layoutSwitch" id="twoColumns">2</a></li><li><a href="" title="Three Columns" class="layoutSwitch" id="threeColumns">3</a></li></ul>');
+	//$('#featureBlock').append('<ul id="switcher"><li>Columns:</li><li><a href="" title="Two Columns" class="layoutSwitch" id="twoColumns">2</a></li><li><a href="" title="Three Columns" class="layoutSwitch" id="threeColumns">3</a></li></ul>');
 	
 	// For Adding Print Page
 	$('#featureBlock').append('<a href="javascript:window.print();" class="printPage">Print This Page</a>');

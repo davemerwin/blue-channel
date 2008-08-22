@@ -18,66 +18,86 @@
     <script type="text/javascript" src="{{ MEDIA_URL }}js/site.settings.js"></script>
 </head>
 <body>
-    <div id="masthead" class="">
-        <div class="wrap container_16">
-        <h2 id="projectTitle" class="mir"><a href="/" title="Take Me Home">Project Title</a></h2>
-        <h4 id="slogan">This a pithy slogan</h4>
-            <ul id="globalNav">
-                <li><a href="/" title="">Home</a></li>
-                <li><a href="/about/" title="">About</a></li>
-                <!-- <li><a href="/help/" title="">Help</a></li>-->
-            </ul>
-            <!-- <div id="searchBlock">
-                <form action="index_submit" method="post" accept-charset="utf-8">
-                    <dl>
-                    <dt><input type="text" name="search" value="" id="search"></dt>
-                    <dd><input type="submit" name="searchSubmit" value="Search" id="searchSubmit"></dd>
-                    </dl>
-                </form>
-            </div> -->
-        </div>
-    </div>
-    <div id="navBlock" class="clearfix">
-        <div class="wrap container_16">
-            {% show_page_list_accessible %}
-        </div>
-    </div>
-    <div id="content" class="clearfix">
-        <div class="wrap container_16">
-        <div id="featureBlock"></div>
-        {% block content %}{% endblock %}
-        {% block sidebar %}{% endblock %}
-        </div>
-    </div>
-    
-    <div id="footer">
-        <div class="wrap container_16">
-             {% show_page_list %}
-            <!--<div class="highlightBlocks clearfix">
-                <div class="footerBlock grid_4">
-                    <h4>I am a Title</h4>
-                    <ul class="objectBlock">
-                    <li><a href="">This is a list</a></li>
-                    <li><a href="">This is another lost</a></li>
-                    <li><a href="">I LOVE lists</a></li>
+    {% block measthead %}
+        <div id="masthead" class="">
+            <div class="wrap container_16">
+            <h2 id="projectTitle" class="mir"><a href="/" title="Take Me Home">Project Title</a></h2>
+            <h4 id="slogan">This a pithy slogan</h4>
+                {% block globalNav %}
+                    <ul id="globalNav">
+                        <li><a href="/" title="">Home</a></li>
+                        <li><a href="/about/" title="">About</a></li>
+                        <!-- <li><a href="/help/" title="">Help</a></li>-->
                     </ul>
+                {% endblock %}
+                {% block searchBlock %}
+                <div id="searchBlock">
+                    <form action="index_submit" method="post" accept-charset="utf-8">
+                        <dl>
+                        <dt><input type="text" name="search" value="" id="search"></dt>
+                        <dd><input type="submit" name="searchSubmit" value="Search" id="searchSubmit"></dd>
+                        </dl>
+                    </form>
                 </div>
-                <div class="footerBlock grid_4">
-                    <h4>So Am I!</h4>
-                    <p class="objectBlock">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                </div>
-                <div class="footerBlock grid_4">
-                    <h4>What About Me?</h4>
-                    <p class="objectBlock">What did you say punk?</p>
-                </div>
-                <div class="footerBlock grid_4">
-                    <h4>Well, You Sure Are Cool!</h4>
+                {% endblock %}
+            </div>
+        </div>
+        {% block navBlock %}
+            <div id="navBlock" class="clearfix">
+                <div class="wrap container_16">
+                    {% show_page_list_accessible %}
                 </div>
             </div>
-            <div class="objectBlock">
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-            </div>-->
+        {% endblock %}
+    {% endblock %}
+    {% block content %}
+        <div id="content" class="clearfix">
+            <div class="wrap container_16">
+            {% block featureBlock %}
+                <div id="featureBlock">
+                    
+                </div>
+            {% endblock %}
+            {% block pageContent %}{% endblock %}
+            {% block sidebar %}{% endblock %}
+            </div>
         </div>
-    </div>
+    {% endblock %}
+    
+    {% block footer %}
+        <div id="footer">
+            <div class="wrap container_16">
+                {% block footerNav %}
+                    {% show_page_list %}
+                {% endblock %}
+                {% block footerHighlights %}
+                    <div class="highlightBlocks clearfix">
+                        <div class="footerBlock grid_4">
+                            <h4>From The Blog</h4>
+                            <ul class="objectBlock">
+                            <li><a href="">This is a list</a></li>
+                            <li><a href="">This is another lost</a></li>
+                            <li><a href="">I LOVE lists</a></li>
+                            </ul>
+                        </div>
+                        <div class="footerBlock grid_4">
+                            <h4>Did You Know</h4>
+                            {% get_did_you_know %}
+                        </div>
+                        <div class="footerBlock grid_4">
+                            <h4>About Me</h4>
+                            <p class="objectBlock">What did you say punk?</p>
+                        </div>
+                        <div class="footerBlock grid_4">
+                            <h4>Tags</h4>
+                        </div>
+                    </div>
+                    <div class="objectBlock">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                    </div>
+                {% endblock %}
+            </div>
+        </div>
+    {% endblock %}
 </body>
 </html>

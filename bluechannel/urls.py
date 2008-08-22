@@ -2,25 +2,23 @@ import os
 from django.conf.urls.defaults import *
 from django.conf import settings
 from django.views.generic.simple import direct_to_template, redirect_to
+from django.contrib import admin
 from django.views.generic.list_detail import object_detail, object_list
 from bluechannel.page.models import *
 
-info_dict = {
-    'queryset': Page.objects.filter(status='Publish'),
-}
+admin.autodiscover()
 
 urlpatterns = patterns('',
 
     # Uncomment this for admin:
-    (r'^admin/', include('django.contrib.admin.urls')),
+    (r'^admin/(.*)', admin.site.root),
     
     # For the profiles for users
     (r'^profiles/', include('profiles.urls')),
     
     # Page Detail
     (r'(?P<slug>[-\w]+)/$', 'bluechannel.page.views.detail'),
-    #(r'(?P<slug>[-\w]+)/$', 'bluechannel.page.views.published_page'),
-    #(r'(?P<slug>[-\w]+)/$', object_detail, info_dict),    
+   
     #for homepage - testing
     (r'^$', 'bluechannel.page.views.home'),
     
