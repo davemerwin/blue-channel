@@ -8,6 +8,8 @@ class Template(models.Model):
     """
     name = models.CharField(max_length=200)
     description = models.TextField(blank=True)
+    created = models.DateTimeField(default=datetime.now)
+    modified = models.DateTimeField(default=datetime.now)
     
     def __unicode__(self):
         return self.name

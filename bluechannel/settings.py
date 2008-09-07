@@ -1,6 +1,6 @@
 import os
 
-DEBUG = False
+DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 PROJECT_PATH = os.path.abspath(os.path.split(__file__)[0])
 
@@ -10,10 +10,10 @@ ADMINS = (
 
 MANAGERS = ADMINS
 
-DATABASE_ENGINE = ''           # 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-DATABASE_NAME = ''             # Or path to database file if using sqlite3.
-DATABASE_USER = ''             # Not used with sqlite3.
-DATABASE_PASSWORD = ''         # Not used with sqlite3.
+DATABASE_ENGINE = 'mysql'           # 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
+DATABASE_NAME = 'davemerwin_tbi'             # Or path to database file if using sqlite3.
+DATABASE_USER = 'davemerwin_tbi'             # Not used with sqlite3.
+DATABASE_PASSWORD = 'f838b8e3'         # Not used with sqlite3.
 DATABASE_HOST = ''             # Set to empty string for localhost. Not used with sqlite3.
 DATABASE_PORT = ''             # Set to empty string for default. Not used with sqlite3.
 
@@ -34,16 +34,16 @@ SITE_ID = 1
 # to load the internationalization machinery.
 USE_I18N = True
 
-AUTH_PROFILE_MODULE = 'accounts.profile'
-
 # Absolute path to the directory that holds media.
 # Example: "/home/media/media.lawrence.com/"
-MEDIA_ROOT = ''
+MEDIA_ROOT = '/home/davemerwin/webapps/tbi_media/'
 
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash if there is a path component (optional in other cases).
 # Examples: "http://media.lawrence.com", "http://example.com/media/"
-MEDIA_URL = ''
+MEDIA_URL = '/media/'
+
+AUTH_PROFILE_MODULE = 'accounts.profile'
 
 # URL prefix for admin media -- CSS, JavaScript and images. Make sure to use a
 # trailing slash.
@@ -51,7 +51,7 @@ MEDIA_URL = ''
 ADMIN_MEDIA_PREFIX = '/static/'
 
 # Make this unique, and don't share it with anybody.
-#SECRET_KEY = ''
+SECRET_KEY = '-r_r1ef88aco5+xe8c%j7dj2%m_5!w+7kq@a)0e4a$037mv=c5'
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
@@ -69,9 +69,7 @@ MIDDLEWARE_CLASSES = (
 
 ROOT_URLCONF = 'bluechannel.urls'
 
-TEMPLATE_DIRS = (
-    os.path.join(PROJECT_PATH, '..', 'templates'),
-)
+TEMPLATE_DIRS = '/home/davemerwin/webapps/tbi/templates/'
 
 TEMPLATE_CONTEXT_PROCESSORS = (
     'django.core.context_processors.auth',
@@ -97,8 +95,10 @@ INSTALLED_APPS = (
 	'bluechannel.layout',
     'bluechannel.accounts',
     'bluechannel.page',
-    'bluechannel.utils',
-    'voting',
+	'bluechannel.gathering',
+	'bluechannel.blog',
+	'bluechannel.demo',
+	'bluechannel.utils',
     'tagging',
     'template_utils',
     'comment_utils',

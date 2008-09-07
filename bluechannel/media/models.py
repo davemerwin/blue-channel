@@ -6,6 +6,8 @@ class Type(models.Model):
     name = models.CharField(max_length=200)
     slug = models.CharField(max_length=100)
     description = models.TextField(blank=True)
+    created = models.DateTimeField(default=datetime.now)
+    modified = models.DateTimeField(default=datetime.now)
 
     class Meta:
         verbose_name_plural = ('Type')

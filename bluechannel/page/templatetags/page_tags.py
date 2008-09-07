@@ -154,6 +154,6 @@ def get_submenu():
 	"""
 	Show Siblings of the current page and all children
 	"""	
-	siblings = Page.get_children()
+	siblings = Page.get_all_siblings()
 	#children = Page.objects.filter(parent=self.id)
 	return {'siblings': siblings}
