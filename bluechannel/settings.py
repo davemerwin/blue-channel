@@ -36,7 +36,7 @@ USE_I18N = True
 
 # Absolute path to the directory that holds media.
 # Example: "/home/media/media.lawrence.com/"
-MEDIA_ROOT = '/home/davemerwin/webapps/tbi_media/'
+MEDIA_ROOT = ''
 
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash if there is a path component (optional in other cases).
@@ -51,7 +51,7 @@ AUTH_PROFILE_MODULE = 'accounts.profile'
 ADMIN_MEDIA_PREFIX = '/static/'
 
 # Make this unique, and don't share it with anybody.
-SECRET_KEY = '-r_r1ef88aco5+xe8c%j7dj2%m_5!w+7kq@a)0e4a$037mv=c5'
+# SECRET_KEY = ''
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
@@ -69,7 +69,7 @@ MIDDLEWARE_CLASSES = (
 
 ROOT_URLCONF = 'bluechannel.urls'
 
-TEMPLATE_DIRS = '/home/davemerwin/webapps/tbi/templates/'
+TEMPLATE_DIRS = ''
 
 TEMPLATE_CONTEXT_PROCESSORS = (
     'django.core.context_processors.auth',
