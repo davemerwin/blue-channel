@@ -1,0 +1,7 @@
+{% if random_testimonial %}
+    <div id="testimonial" class="moduleBlock">
+    <h3 class="moduleToggle"><a href="" title="Toggle The Testimonials">Testimonials</a></h3>
+        <h4>{{random_testimonial.title}}</h4>
+        <div class="objectBlock">{{random_testimonial.main_content}}</div>
+    </div>
+{% endif %}

@@ -1,0 +1,9 @@
+{% load markup %}
+{% if hot_spot_one %}
+{% for spot in hot_spot_one %}
+    <h3 class="moduleToggle">{{spot.name}}</h3>
+    {{spot.content|markdown}}
+{% endfor %}
+{% else %}
+    <h3>Waiting On Content</h3>
+{% endif %}

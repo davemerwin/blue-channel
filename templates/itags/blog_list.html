@@ -1,0 +1,9 @@
+{% if blog_list %}
+    <ul>
+    {% for blog in blog_list %}
+        <li><a href="{{blog.get_absolute_url}}" title="{{blog.title}}">{{blog.title}}</a></li>
+    {% endfor %}
+    </li>
+{% else %}
+    There are no blog posts right now.
+{% endif %}

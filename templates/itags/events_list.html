@@ -1,0 +1,13 @@
+{% load markup %}
+{% if events_list %}
+    <ul id="eventList" class="neList">
+        {% for event in events_list %}
+            <li>
+                <h3><a href="{{ event.get_absolute_url }}" title="{{ event.name }}">{{event.name}}</a></h3>
+                {{event.description|truncatewords_html:"20"|markdown}}
+            </li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <h4>Waiting On Content</h4>
+{% endif %}
