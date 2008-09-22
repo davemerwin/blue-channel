@@ -1,7 +1,12 @@
 from django.contrib import admin
-from bluechannel.accounts.models import Profile
+from bluechannel.accounts.models import Account, Staff
 
-class ProfileAdmin(admin.ModelAdmin):
+class AccountAdmin(admin.ModelAdmin):
     pass
 
-admin.site.register(Profile, ProfileAdmin)
+admin.site.register(Account, AccountAdmin)
+
+class StaffAdmin(admin.ModelAdmin):
+    pass
+
+admin.site.register(Staff, StaffAdmin)

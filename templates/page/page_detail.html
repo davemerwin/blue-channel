@@ -8,13 +8,26 @@
 {% block pageContent %}
     <div id="pageContent" class="grid_8">
         <h1 class="pageTitle">{{object.title}}</h1>
-        {% if object.media.all %}
-            {% for media in object.media.all %}
-                <h2>{{media.name}}</h2>
-                {{media.media_embed|safe}}
-            {% endfor %}
-        {% endif %}
         {{object.main_content|markdown}}
+        
+        {% for mobject in object.media.all %}
+            {% if mobject.media_embed %}
+                <h3>{{mobject.name}}</h3>
+                {{mobject.media_embed|safe}}
+            {% else %}
+                {% ifequal mobject.media_type.name "Image"  %}
+                    <div id="{{mobject.slug}}">
+                        <img src="{{mobject.media_file.url}}" alt="{{mobject.name}}">
+                    </div>
+                {% endifequal %}
+                {% ifequal mobject.media_type.name "PDF"  %}
+                    <div id="{{mobject.slug}}">
+                        <h5><a href="{{mobject.get_media_file_url}}" title="{{mobject.name}}">Download {{mobject.name}}</a> (PDF)</h5>
+                    </div>
+                    pdf
+                {% endifequal %}
+            {% endif %}
+        {% endfor %}
     </div>
 {% endblock %}
 {% block sidebar %}
