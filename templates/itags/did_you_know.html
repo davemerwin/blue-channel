@@ -1,5 +1,6 @@
 {% if did_you_know %}
-        {{did_you_know.content}}
+    <h4>{{did_you_know.title}}</h4>
+    {{did_you_know.main_content}}
 {% else %}
-    There are no Did You Knows.
+    There is nothing to say right now.
 {% endif %}

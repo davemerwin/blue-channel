@@ -1,4 +1,6 @@
-{% if random_testimonial %}
-        <h4>{{about_blurb.title}}</h4>
-        {{about_blurb.main_content}}
+{% if did_you_know %}
+    <h4>{{about_blurb.title}}</h4>
+    {{about_blurb.main_content}}
+{% else %}
+    There is nothing to say right now.
 {% endif %}
