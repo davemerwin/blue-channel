@@ -22,7 +22,7 @@
                 {% endifequal %}
                 {% ifequal mobject.media_type.name "PDF"  %}
                     <div id="{{mobject.slug}}">
-                        <h5><a href="{{mobject.get_media_file_url}}" title="{{mobject.name}}">Download {{mobject.name}}</a> (PDF)</h5>
+                        <h5><a href="{{mobject.media_file.url}}" title="{{mobject.name}}">Download {{mobject.name}}</a> (PDF)</h5>
                     </div>
                     pdf
                 {% endifequal %}
