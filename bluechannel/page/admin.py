@@ -25,7 +25,7 @@ admin.site.register(Event, EventAdmin)
 class PageAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ('title',)}
     save_on_top = True
-    list_display = ('title', 'page_title', 'page_type', 'status', 'summary', 'template', 'author', 'modified', 'in_nav', 'parent')
+    list_display = ('title', 'page_title', 'page_type', 'status', 'summary', 'author', 'modified', 'in_nav', 'parent')
     list_filter = ('status', 'in_nav', 'page_type')
     search_fields = ('title', 'page_title', 'summary', 'main_content')
 

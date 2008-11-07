@@ -3,7 +3,6 @@ from tagging.fields import TagField
 from django.db import models
 from django.contrib.auth.models import User
 from bluechannel.media.models import Media
-from bluechannel.layout.models import *
 
 class Content(models.Model):
     """
@@ -98,7 +97,6 @@ class Page(models.Model):
     status = models.CharField(max_length=20, choices=PAGE_STATUS)
     main_content = models.TextField(blank=True)
     summary = models.TextField(blank=True)
-    template = models.ForeignKey(Template)
     extra_content = models.ManyToManyField(Content, blank=True, related_name='extra_content')
     content_hilight = models.ManyToManyField(Content, blank=True, related_name='content_hilight')
     event = models.ManyToManyField(Event, blank=True)
