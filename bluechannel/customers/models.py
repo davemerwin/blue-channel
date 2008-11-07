@@ -1,6 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import User
 from bluechannel.media.models import Media
+
+# From teh Pinax Apps
 from account.models import Account
 from profiles.models import Profile
 

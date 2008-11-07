@@ -101,6 +101,7 @@ INSTALLED_APPS = (
     'core',
     'account',
     'blog',
+    'notification',
     'profiles',
     'tagging',
     'timezones',

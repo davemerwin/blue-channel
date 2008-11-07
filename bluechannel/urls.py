@@ -7,34 +7,33 @@ from django.views.generic.list_detail import object_detail, object_list
 from bluechannel.utils.views import apply_markdown
 # from bluechannel.feeds import *
 
-admin.autodiscover()
+from blog.feeds import BlogFeedAll, BlogFeedUser
+blogs_feed_dict = {"feed_dict": {
+    'all': BlogFeedAll,
+    'only': BlogFeedUser,
+}}
 
-# feeds = {
-#     'latest': LatestEntries,
-# }
+admin.autodiscover()
 
 urlpatterns = patterns('',
 
     # Uncomment this for admin:
     (r'^admin/(.*)', admin.site.root),
     
-    # Triggers the markdown viewer
-    url(r'^markdown/preview/$', apply_markdown, name="apply_markdown"),
-    
     # For the profiles for users
-    url(r'^profiles/', include('profiles.urls')),
+    (r'^profiles/', include('profiles.urls')),
     
     # For the events
-    url(r'^events/', include('bluechannel.page.urls_event')),
+    (r'^events/', include('bluechannel.page.urls_event')),
     
     # For the events
-    url(r'^blog/', include('bluechannel.blog.urls')),
+    (r'^blog/', include('blog.urls')),
     
     # For comments
-    url(r'^comments/', include('django.contrib.comments.urls')),
+    (r'^comments/', include('threadedcomments.urls')),
     
     #Feeds
-    # url(r'^feeds/(?P<url>.*)/$', 'django.contrib.syndication.views.feed', {'feed_dict': feeds}),
+    (r'^feeds/posts/(.*)/$', 'django.contrib.syndication.views.feed', blogs_feed_dict),
     
     # Page Detail
     url(r'(?P<slug>[-\w]+)/$', 'bluechannel.page.views.detail'),
