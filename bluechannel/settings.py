@@ -92,16 +92,19 @@ INSTALLED_APPS = (
     'django.contrib.sitemaps',
     'django.contrib.syndication',
     'bluechannel.media',
-	'bluechannel.layout',
-    'bluechannel.accounts',
+    'bluechannel.customers',
     'bluechannel.page',
-	'bluechannel.gathering',
-	'bluechannel.blog',
 	'bluechannel.demo',
-	'bluechannel.utils',
+	
+	# External Apps
+	# From Pinax http://pinaxproject.com/
+    'core',
+    'account',
+    'blog',
+    'profiles',
     'tagging',
-    'template_utils',
-    'comment_utils',
+    'timezones',
+    'voting',
 )
 
 # For local development setting overrides

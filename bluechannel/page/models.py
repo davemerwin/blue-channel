@@ -96,7 +96,7 @@ class Page(models.Model):
     page_type = models.ForeignKey(Type)
     parent = models.ForeignKey('self', blank=True, null=True, related_name='child')
     status = models.CharField(max_length=20, choices=PAGE_STATUS)
-    main_content = models.TextField(blank=True, help_text=("You can use Markdown to format your text. To see the syntax go here: http://daringfireball.net/projects/markdown/syntax"))
+    main_content = models.TextField(blank=True)
     summary = models.TextField(blank=True)
     template = models.ForeignKey(Template)
     extra_content = models.ManyToManyField(Content, blank=True, related_name='extra_content')
