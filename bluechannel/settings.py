@@ -94,13 +94,14 @@ INSTALLED_APPS = (
     'bluechannel.media',
     'bluechannel.customers',
     'bluechannel.page',
+    'bluechannel.blog',
 	'bluechannel.demo',
+	'bluechannel.categories',
 	
 	# External Apps
 	# From Pinax http://pinaxproject.com/
     'core',
     'account',
-    'blog',
     'notification',
     'profiles',
     'tagging',

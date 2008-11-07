@@ -3,6 +3,7 @@ from tagging.fields import TagField
 from django.db import models
 from django.contrib.auth.models import User
 from bluechannel.media.models import Media
+from django.utils.translation import ugettext_lazy as _
 
 class Content(models.Model):
     """
@@ -16,8 +17,8 @@ class Content(models.Model):
     name = models.CharField(max_length=200)
     content = models.TextField(blank=True)
     status = models.CharField(max_length=20, choices=CONTENT_STATUS)
-    created = models.DateTimeField(default=datetime.now)
-    modified = models.DateTimeField(default=datetime.now)
+    created_at = models.DateTimeField(_('created at'), default=datetime.now)
+    updated_at = models.DateTimeField(_('updated at'))
     tags = TagField()
     
     def __unicode__(self):
@@ -27,11 +28,9 @@ class Content(models.Model):
         verbose_name = ('Content')
         verbose_name_plural = ('Content')
     
-    def save(self):
-        if not self.id:
-            self.created = datetime.now()
-        self.modified = datetime.now()
-        super(Content, self).save()
+    def save(self, force_insert=False, force_update=False):
+        self.updated_at = datetime.now()
+        super(Content, self).save(force_insert, force_update)
         
 class Type(models.Model):
     """
@@ -39,8 +38,8 @@ class Type(models.Model):
     """
     name = models.CharField(max_length=100)
     description = models.TextField(blank=True)
-    created = models.DateTimeField(auto_now_add=True)
-    modified = models.DateTimeField(auto_now=True)
+    created_at = models.DateTimeField(_('created at'), default=datetime.now)
+    updated_at = models.DateTimeField(_('updated at'))
     
     class Meta:
         verbose_name = ('Type')
@@ -48,6 +47,10 @@ class Type(models.Model):
     
     def __str__(self):
         return self.name
+        
+    def save(self, force_insert=False, force_update=False):
+        self.updated_at = datetime.now()
+        super(Type, self).save(force_insert, force_update)
         
 class Event(models.Model):
     """The events module"""
@@ -58,8 +61,8 @@ class Event(models.Model):
     event_end_time = models.TimeField(blank=True)
     description = models.TextField('Content', blank=True)
     summary = models.TextField(blank=True)
-    created = models.DateTimeField(editable=False)
-    modified = models.DateTimeField(editable=False)
+    created_at = models.DateTimeField(_('created at'), default=datetime.now)
+    updated_at = models.DateTimeField(_('updated at'))
     slug = models.CharField(max_length=100)
     tags = TagField()
     enable_comments = models.BooleanField(default=True)
@@ -67,11 +70,9 @@ class Event(models.Model):
     def __unicode__(self):
         return self.name
         
-    def save(self):
-        if not self.id:
-            self.created = datetime.now()
-        self.modified = datetime.now()
-        super(Event, self).save()
+    def save(self, force_insert=False, force_update=False):
+        self.updated_at = datetime.now()
+        super(Event, self).save(force_insert, force_update)
 
 # Published Page Manager
 class PublishedPageManager(models.Manager):
@@ -101,8 +102,8 @@ class Page(models.Model):
     content_hilight = models.ManyToManyField(Content, blank=True, related_name='content_hilight')
     event = models.ManyToManyField(Event, blank=True)
     media = models.ManyToManyField(Media, blank=True)
-    created = models.DateTimeField(default=datetime.now)
-    modified = models.DateTimeField(default=datetime.now)
+    created_at = models.DateTimeField(_('created at'), default=datetime.now)
+    updated_at = models.DateTimeField(_('updated at'))
     author = models.ForeignKey(User)
     similar_pages = models.ManyToManyField('self', blank=True, related_name='similar')
     enable_comments = models.BooleanField(default=False)
@@ -115,11 +116,9 @@ class Page(models.Model):
     objects = models.Manager() # The default manager.
     published_objects = PublishedPageManager() # Only published pages
 
-    def save(self):
-        if not self.id:
-            self.created = datetime.now()
-        self.modified = datetime.now()
-        super(Page, self).save()
+    def save(self, force_insert=False, force_update=False):
+        self.updated_at = datetime.now()
+        super(Page, self).save(force_insert, force_update)
 
     def __unicode__(self):
         return self.title

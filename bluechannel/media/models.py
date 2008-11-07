@@ -1,13 +1,14 @@
 from datetime import datetime
 from django.db import models
 from tagging.fields import TagField
+from django.utils.translation import ugettext_lazy as _
 
 class Type(models.Model):
     name = models.CharField(max_length=200)
     slug = models.CharField(max_length=100)
     description = models.TextField(blank=True)
-    created = models.DateTimeField(default=datetime.now)
-    modified = models.DateTimeField(default=datetime.now)
+    created_at = models.DateTimeField(_('created at'), default=datetime.now)
+    updated_at = models.DateTimeField(_('updated at'))
 
     class Meta:
         verbose_name_plural = ('Type')
@@ -17,6 +18,11 @@ class Type(models.Model):
 
     def get_absolute_url(self):
         return "/media-type/%i/" % (self.slug)
+        
+    def save(self, force_insert=False, force_update=False):
+        self.updated_at = datetime.now()
+        super(Type, self).save(force_insert, force_update)
+        
 
 class Media(models.Model):
     name = models.CharField(max_length=250)
@@ -31,8 +37,8 @@ class Media(models.Model):
     author = models.CharField(blank=True, max_length=100)
     liscense_type = models.CharField(blank=True, max_length=100)
     liscense_url = models.URLField(blank=True, verify_exists=True)
-    created = models.DateTimeField(default=datetime.now)
-    modified = models.DateTimeField(default=datetime.now)
+    created_at = models.DateTimeField(_('created at'), default=datetime.now)
+    updated_at = models.DateTimeField(_('updated at'))
     display = models.BooleanField(default=True)
     tags = TagField()
     
@@ -42,11 +48,9 @@ class Media(models.Model):
     def __unicode__(self):
         return self.name
 
-    def save(self):
-        if not self.id:
-            self.created = datetime.now()
-        self.modified = datetime.now()
-        super(Media, self).save()
+    def save(self, force_insert=False, force_update=False):
+        self.updated_at = datetime.now()
+        super(Media, self).save(force_insert, force_update)
     
     def get_absolute_url(self):
         return self.get_media_file_url()

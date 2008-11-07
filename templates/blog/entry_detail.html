@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% load markup page_tags blog_tags comments %}
+
+{% block title %}{{ object.title }} | {% endblock %}
+{% block bodyId %}{{object.slug}}{% endblock %}
+{% block content %}
+
+<div id="pageContent" class="grid_10">
+        
+        <div class="meta grid_2 alpha">
+            <ul>
+            <li><strong>{{object.author.username}}</strong></li>
+            <li>{{object.created|date}}</li>
+            <li>Comments ({% get_comment_count for object as comment_count %}{% ifequal comment_count '0' %}0{% else %}{{comment_count}}{% endifequal %})</li>
+            </ul>
+        </div>
+        <div class="postItem grid_8 omega">
+                <h1 class="pageTitle">{{object.title}}</h1>
+                {{object.main_content|markdown}}
+                <div id="comments">
+                    {% get_comment_list for object as comment_list %}
+                    {% if comment_list %}
+                        <h4>Comments</h4>
+                    {% endif %}
+                    <ul>
+                    {% for comment in comment_list %}
+                        <li class="{% cycle comentEven,commentOdd %}">
+                            {{comment.comment|markdown}}
+                            <p class="meta"><a href="{{comment.url}}">{{comment.name}}</a> | {{comment.submit_date|date:"D d M Y"}}</p>
+                        </li>
+                    {% endfor %}
+                    </ul>
+                    <h4>Please Leave a Comment</h4>
+                    {% render_comment_form for object %}
+                </div>
+        </div>
+        
+</div>
+{% endblock %}
+
+{% block sidebar %}
+<div id="sidebar" class="grid_6">
+    <h3>Recent Entries</h3>
+    <div class="objectBlock">
+        {% recent_entries_list %}
+    </div>
+    {% block announcements %}
+        {% include "includes/announcements.html" %}
+    {% endblock %}
+    {% block sidebarColOne %}
+        <div class="grid_3 alpha">
+            {% include "includes/blog_sidebar_col1.html" %}
+        </div>
+    {% endblock %}
+    {% block sidebarColTwo %}
+        <div class="grid_3 omega">
+            {% include "includes/sidebar_col2.html" %}
+        </div>
+    {% endblock %}
+</div>
+{% endblock %}
