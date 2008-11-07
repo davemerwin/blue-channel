@@ -1,20 +1,21 @@
 from django.db import models
 from django.contrib.auth.models import User
 from bluechannel.media.models import Media
+from account.models import Account
+from profiles.models import Profile
 
 # Create your models here.
-class Account(models.Model):
+class Customer(models.Model):
     user = models.ForeignKey(User, unique=True)
-    website = models.URLField(blank=True, verify_exists=True)
-    profile_text = models.TextField(blank=True)
-    phone = models.CharField(blank=True, max_length=15)
+    account = models.ForeignKey(Account)
+    profile = models.ForeignKey(Profile)
+    phone = models.CharField(max_length=15)
     mobile = models.CharField(blank=True, max_length=15)
     fax = models.CharField(blank=True, max_length=15)
-    Address = models.TextField(blank=True)
-    city = models.CharField(blank=True, max_length=200)
-    state = models.CharField(blank=True, max_length=100)
-    postal_code = models.IntegerField(blank=True, null=True)
-    mugshot = models.ImageField(upload_to="/mugshots/", height_field=100, width_field=100, blank=True)
+    address = models.TextField()
+    city = models.CharField(max_length=200)
+    state = models.CharField(max_length=100)
+    postal_code = models.IntegerField()
 
     def get_absolute_url(self):
         return ('profiles_profile_detail', (), { 'username': self.user.username })

@@ -104,6 +104,7 @@ INSTALLED_APPS = (
     'profiles',
     'tagging',
     'timezones',
+    'threadedcomments',
     'voting',
 )
 
