@@ -1,5 +1,5 @@
 from django.contrib import admin
-from bluechannel.page.models import Content, Type, Event, Page
+from page.models import Content, Type, Event, Page
 
 class ContentAdmin(admin.ModelAdmin):
     save_on_top = True

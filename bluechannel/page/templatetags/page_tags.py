@@ -1,5 +1,5 @@
 from django import template
-from bluechannel.page.models import Page, Content
+from page.models import Page, Content
 
 register = template.Library()
 

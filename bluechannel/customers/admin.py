@@ -1,5 +1,5 @@
 from django.contrib import admin
-from bluechannel.customers.models import Customer
+from customers.models import Customer
 
 class CustomerAdmin(admin.ModelAdmin):
     pass

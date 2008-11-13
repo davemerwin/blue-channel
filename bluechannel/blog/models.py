@@ -2,8 +2,8 @@ from datetime import datetime
 from tagging.fields import TagField
 from django.db import models
 from django.contrib.auth.models import User
-from bluechannel.media.models import Media
-from bluechannel.categories.models import Category
+from media.models import Media
+from categories.models import Category
 from django.utils.translation import ugettext_lazy as _
 
 # Published Event Manager

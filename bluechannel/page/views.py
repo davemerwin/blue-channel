@@ -1,5 +1,5 @@
 from django.views.generic.list_detail import *
-from bluechannel.page.models import *
+from page.models import *
 from django.shortcuts import render_to_response
 from django.template import Context, Template, RequestContext
 from django.views.generic.list_detail import object_list, object_detail

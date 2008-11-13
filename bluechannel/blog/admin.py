@@ -1,5 +1,5 @@
 from django.contrib import admin
-from bluechannel.blog.models import Entry
+from blog.models import Entry
 
 class EntryAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ('title',)}

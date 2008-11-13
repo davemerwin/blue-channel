@@ -2,7 +2,7 @@ from datetime import datetime
 from tagging.fields import TagField
 from django.db import models
 from django.contrib.auth.models import User
-from bluechannel.media.models import Media
+from media.models import Media
 from django.utils.translation import ugettext_lazy as _
 
 class Content(models.Model):
