@@ -13,6 +13,7 @@ class Customer(models.Model):
     user = models.ForeignKey(User, unique=True)
     account = models.ForeignKey(Account)
     profile = models.ForeignKey(Profile)
+    organization = models.CharField(blank=True, max_length=255)
     phone = models.CharField(max_length=15)
     mobile = models.CharField(blank=True, max_length=15)
     fax = models.CharField(blank=True, max_length=15)
