@@ -2,7 +2,7 @@ from django.conf.urls.defaults import *
 from blog.models import Post
 
 info_dict = {
-    'queryset': Entry.objects.filter(status='publish'),
+    'queryset': Post.objects.filter(status='publish'),
     'date_field': 'created',
     #'paginate_by': 25,
 }
