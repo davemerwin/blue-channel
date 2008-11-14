@@ -80,7 +80,7 @@ def about_blurb():
 	"""
 	For creating a nav list
 	"""
-	about_blub = Content.objects.filter(tags='about-blurb')
+	about_blub = Highlight.objects.filter(tags='about-blurb')
 	return {'about_blurb': about_blurb}
 	
 @register.inclusion_tag('itags/page_list_accessible.html')
@@ -96,7 +96,7 @@ def show_random_testimonial():
 	"""
 	For generating a single piece of content from content tagged testimonial
 	"""
-	random_testimonial = Content.objects.filter(tags='testimonial')
+	random_testimonial = Highlight.objects.filter(tags='testimonial')
 	if random_testimonial != '':
 		return {'random_testimonial': random_testimonial}
 	else:
@@ -143,7 +143,7 @@ def get_did_you_know():
 	"""
 	For showing content tagged with dyk (did you know)
 	"""
-	did_you_know = Content.objects.filter(tags='dyk').order_by('?')
+	did_you_know = Highlight.objects.filter(tags='dyk').order_by('?')
 	if did_you_know != '':
 		return {'did_you_know': did_you_know}
 	else:

@@ -1,11 +1,11 @@
 from django.contrib import admin
-from page.models import Content, Type, Event, Page
+from page.models import Highlight, Type, Event, Page
 
-class ContentAdmin(admin.ModelAdmin):
+class HighlightAdmin(admin.ModelAdmin):
     save_on_top = True
     pass
 
-admin.site.register(Content, ContentAdmin)
+admin.site.register(Highlight, HighlightAdmin)
 
 class TypeAdmin(admin.ModelAdmin):
     save_on_top = True
