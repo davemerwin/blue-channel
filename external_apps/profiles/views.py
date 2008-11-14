@@ -12,8 +12,8 @@ from django.utils.translation import ugettext
 
 #from zwitschern.models import Following
 
-from icarus.profiles.models import Profile
-from icarus.profiles.forms import ProfileForm
+from profiles.models import Profile
+from profiles.forms import ProfileForm
 
 #from gravatar.templatetags.gravatar import gravatar
 
