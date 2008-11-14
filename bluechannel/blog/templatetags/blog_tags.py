@@ -1,5 +1,5 @@
 from django import template
-from bluechannel.blog.models import Entry
+from blog.models import Post
 
 register = template.Library()
 
