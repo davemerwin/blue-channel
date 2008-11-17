@@ -72,7 +72,7 @@ def show_page_list():
 	"""
 	For creating a nav list
 	"""
-	page_list = Page.objects.filter(in_nav=1)
+	page_list = Page.objects.filter(in_nav=1).order_by('order')
 	return {'page_list': page_list}
 	
 @register.inclusion_tag('itags/about_blurb.html')
@@ -88,7 +88,7 @@ def show_page_list_accessible():
 	"""
 	For creating a nav list
 	"""
-	page_list = Page.objects.filter(in_nav=1)
+	page_list = Page.objects.filter(in_nav=1).order_by('order')
 	return {'page_list': page_list}
 
 @register.inclusion_tag('itags/random_testimonial.html')
