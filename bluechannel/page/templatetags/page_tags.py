@@ -1,5 +1,5 @@
 from django import template
-from page.models import Page, Content
+from page.models import Page, Highlight
 
 register = template.Library()
 
@@ -60,7 +60,7 @@ class BreadcrumbNode(template.Node):
 		context[self.context_var] = page_list
 		return ''
 
-		from bluechannel.content.models import *
+		from bluechannel.highlight.models import *
 		from bluechannel.event.models import *
 		from bluechannel.asset.models import *
 		from django import template
