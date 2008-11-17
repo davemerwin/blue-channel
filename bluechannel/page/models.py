@@ -5,18 +5,19 @@ from django.contrib.auth.models import User
 from media.models import Media
 from django.utils.translation import ugettext_lazy as _
 
-class Content(models.Model):
+STATUS = (
+    ('draft', 'Draft'),
+    ('remove', 'Remove'),
+    ('publish', 'Publish')
+)
+
+class Highlight(models.Model):
     """
     A piece of content that is included via Page.
     """
-    CONTENT_STATUS = (
-        ('draft', 'Draft'),
-        ('remove', 'Remove'),
-        ('publish', 'Publish')
-    )
     name = models.CharField(max_length=200)
     content = models.TextField(blank=True)
-    status = models.CharField(max_length=20, choices=CONTENT_STATUS)
+    status = models.CharField(max_length=20, choices=STATUS)
     created_at = models.DateTimeField(_('created at'), default=datetime.now)
     updated_at = models.DateTimeField(_('updated at'))
     tags = TagField()
@@ -25,12 +26,12 @@ class Content(models.Model):
         return self.name
     
     class Meta:
-        verbose_name = ('Content')
-        verbose_name_plural = ('Content')
+        verbose_name = ('Highlight')
+        verbose_name_plural = ('Highlights')
     
     def save(self, force_insert=False, force_update=False):
         self.updated_at = datetime.now()
-        super(Content, self).save(force_insert, force_update)
+        super(Highlight, self).save(force_insert, force_update)
         
 class Type(models.Model):
     """
@@ -85,21 +86,16 @@ class Page(models.Model):
     the URL `/about/` would be Page.objects.get(slug='about').  Pages can be
     nested heirarchically.
     """
-    PAGE_STATUS = (
-        ('draft', 'Draft'),
-        ('remove', 'Remove'),
-        ('publish', 'Publish')
-    )
+
     title = models.CharField(max_length=200)
     page_title = models.CharField(blank=True, max_length=200, help_text=("Use the Page Title if you want the Title of the page to be different than the Title. For Example... Title: About. Page Title: About Our Company."))
     slug = models.CharField(max_length=100)
     page_type = models.ForeignKey(Type)
     parent = models.ForeignKey('self', blank=True, null=True, related_name='child')
-    status = models.CharField(max_length=20, choices=PAGE_STATUS)
+    status = models.CharField(max_length=20, choices=STATUS)
     main_content = models.TextField(blank=True)
     summary = models.TextField(blank=True)
-    extra_content = models.ManyToManyField(Content, blank=True, related_name='extra_content')
-    content_hilight = models.ManyToManyField(Content, blank=True, related_name='content_hilight')
+    hilight = models.ManyToManyField(Highlight, blank=True, related_name='hilight')
     event = models.ManyToManyField(Event, blank=True)
     media = models.ManyToManyField(Media, blank=True)
     created_at = models.DateTimeField(_('created at'), default=datetime.now)

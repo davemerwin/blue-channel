@@ -1,11 +1,11 @@
 from django.contrib import admin
-from page.models import Content, Type, Event, Page
+from page.models import Highlight, Type, Event, Page
 
-class ContentAdmin(admin.ModelAdmin):
+class HighlightAdmin(admin.ModelAdmin):
     save_on_top = True
     pass
 
-admin.site.register(Content, ContentAdmin)
+admin.site.register(Highlight, HighlightAdmin)
 
 class TypeAdmin(admin.ModelAdmin):
     save_on_top = True
@@ -25,7 +25,7 @@ admin.site.register(Event, EventAdmin)
 class PageAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ('title',)}
     save_on_top = True
-    list_display = ('title', 'page_title', 'page_type', 'status', 'summary', 'author', 'modified', 'in_nav', 'parent')
+    list_display = ('title', 'page_title', 'page_type', 'status', 'summary', 'author', 'updated_at', 'in_nav', 'parent')
     list_filter = ('status', 'in_nav', 'page_type')
     search_fields = ('title', 'page_title', 'summary', 'main_content')
 
