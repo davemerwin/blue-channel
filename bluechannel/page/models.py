@@ -140,9 +140,9 @@ class Page(models.Model):
 
     def get_children(self):
         "Gets children of current page, no grandchildren."
-        return Page.objects.filter(parent=self.id)
+        return Page.published_objects.filter(parent=self.id)
 
     def get_all_siblings(self):
         "Gets siblings of current page only, no children of siblings."
-        return Page.objects.filter(parent=self.parent)
+        return Page.published_objects.filter(parent=self.parent)
         #return "/%i/" % (self.slug)
