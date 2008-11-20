@@ -23,8 +23,8 @@ class Post(models.Model):
     title = models.CharField(max_length=200)
     slug = models.CharField(max_length=100)
     status = models.CharField(max_length=20, choices=ENTRY_STATUS)
-    categories = models.ManyToManyField(Category, blank=True)
     main_content = models.TextField(blank=True)
+    category = models.ForeignKey(Category, blank=True, null=True)
     media = models.ManyToManyField(Media, blank=True)
     summary = models.TextField(blank=True)
     publish = models.DateTimeField(_('publish'), default=datetime.now)
@@ -47,6 +47,9 @@ class Post(models.Model):
         
     def get_absolute_url(self):
         return "/blog/%s/%s/" % (self.created.strftime("%Y/%b/%d").lower(), self.slug)
+        
+    def get_month(self):
+        return "/blog/%s/" % (self.created.strftime("%Y/%b").lower())
         
     class Meta:
         verbose_name = ('Post')

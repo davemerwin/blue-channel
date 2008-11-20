@@ -14,7 +14,7 @@ from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import User
 
 from emailconfirmation.models import EmailAddress
-from friends.models import JoinInvitation
+# from friends.models import JoinInvitation
 from account.models import Account
 
 from timezones.forms import TimeZoneField

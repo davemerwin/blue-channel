@@ -1,9 +1,0 @@
-{% load markup %}
-{% if librarian %}
-{% for lib in librarian %}
-    <h3 class="moduleToggle">{{lib.name}}</h3>
-    <div class="objectBlock">{{lib.content|markdown}}</div>
-{% endfor %}
-{% else %}
-    <h3>Waiting On Content</h3>
-{% endif %}
