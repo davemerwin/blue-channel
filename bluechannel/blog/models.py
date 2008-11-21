@@ -46,10 +46,10 @@ class Post(models.Model):
         return self.title
         
     def get_absolute_url(self):
-        return "/blog/%s/%s/" % (self.created.strftime("%Y/%b/%d").lower(), self.slug)
+        return "/blog/%s/%s/" % (self.created_at.strftime("%Y/%b/%d").lower(), self.slug)
         
     def get_month(self):
-        return "/blog/%s/" % (self.created.strftime("%Y/%b").lower())
+        return "/blog/%s/" % (self.created_at.strftime("%Y/%b").lower())
         
     class Meta:
         verbose_name = ('Post')
