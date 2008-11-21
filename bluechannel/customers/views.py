@@ -13,13 +13,14 @@ def subscribe(request):
     if request.method == 'POST':
         form = CustomerForm(request.POST)
         if form.is_valid():
-            form.save()
+            customer = form.save(commit=False)
+            customer.user = request.user
+            customer.save()
             
             # Send an email to teh admin letting them know that a person registered
             subject = render_to_string('subscribe/email_subject.txt',)
-            message = render_to_string('subscribe/email.txt',
-                {
-                    'user':form.cleaned_data['user'],
+            message = render_to_string('subscribe/email.txt', {
+                    'user': request.user,
                 })
             recipients = ['dave.merwin@gmail.com']
             # recipients = ['johnsonlm@wou.edu']

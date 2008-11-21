@@ -35,5 +35,5 @@ class Customer(models.Model):
 class CustomerForm(ModelForm):
     class Meta:
         model = Customer
-        exclude=('approved', 'created_at', 'updated_at',)
+        exclude=('user', 'approved', 'created_at', 'updated_at',)
         
