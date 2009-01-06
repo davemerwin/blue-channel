@@ -95,6 +95,10 @@ INSTALLED_APPS = (
     'blog',
     'demo',
     'categories',
+    
+    
+    #External Apps
+    'tagging',
 )
 
 
