@@ -95,6 +95,7 @@ INSTALLED_APPS = (
     'blog',
     'demo',
     'categories',
+    'tagging',
 )
 
 
