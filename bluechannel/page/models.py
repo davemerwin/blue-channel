@@ -19,7 +19,7 @@ class Highlight(models.Model):
     content = models.TextField(blank=True)
     status = models.CharField(max_length=20, choices=STATUS)
     created_at = models.DateTimeField(_('created at'), default=datetime.now)
-    updated_at = models.DateTimeField(_('updated at'))
+    updated_at = models.DateTimeField(_('updated at'), blank=True)
     tags = TagField()
     
     def __unicode__(self):
@@ -40,7 +40,7 @@ class Type(models.Model):
     name = models.CharField(max_length=100)
     description = models.TextField(blank=True)
     created_at = models.DateTimeField(_('created at'), default=datetime.now)
-    updated_at = models.DateTimeField(_('updated at'))
+    updated_at = models.DateTimeField(_('updated at'), blank=True)
     
     class Meta:
         verbose_name = ('Type')
@@ -63,7 +63,7 @@ class Event(models.Model):
     description = models.TextField('Content', blank=True)
     summary = models.TextField(blank=True)
     created_at = models.DateTimeField(_('created at'), default=datetime.now)
-    updated_at = models.DateTimeField(_('updated at'))
+    updated_at = models.DateTimeField(_('updated at'), blank=True)
     slug = models.CharField(max_length=100)
     tags = TagField()
     enable_comments = models.BooleanField(default=True)
@@ -99,7 +99,7 @@ class Page(models.Model):
     event = models.ManyToManyField(Event, blank=True)
     media = models.ManyToManyField(Media, blank=True)
     created_at = models.DateTimeField(_('created at'), default=datetime.now)
-    updated_at = models.DateTimeField(_('updated at'))
+    updated_at = models.DateTimeField(_('updated at'), blank=True)
     author = models.ForeignKey(User)
     similar_pages = models.ManyToManyField('self', blank=True, related_name='similar')
     enable_comments = models.BooleanField(default=False)
