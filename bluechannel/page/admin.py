@@ -1,5 +1,5 @@
 from django.contrib import admin
-from page.models import Highlight, Type, Event, Page
+from page.models import Highlight, Type, Event, Template, Page
 
 class HighlightAdmin(admin.ModelAdmin):
     save_on_top = True
@@ -21,6 +21,12 @@ class EventAdmin(admin.ModelAdmin):
     pass
 
 admin.site.register(Event, EventAdmin)
+
+class TemplateAdmin(admin.ModelAdmin):
+    save_on_top = True
+    list_display = ('name', 'description')
+
+admin.site.register(Template, TemplateAdmin)
 
 class PageAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ('title',)}

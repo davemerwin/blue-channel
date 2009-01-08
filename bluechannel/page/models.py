@@ -75,6 +75,15 @@ class Event(models.Model):
         self.updated_at = datetime.now()
         super(Event, self).save(force_insert, force_update)
 
+class Template(models.Model):
+    """A template model with sample template image"""
+    name = models.CharField(max_length=200)
+    description = models.TextField(blank=True)
+    image = models.ImageField(upload_to='template_images', max_length=200, blank=True)
+
+    def __unicode__(self):
+        return self.name
+
 # Published Page Manager
 class PublishedPageManager(models.Manager):
     def get_query_set(self):
@@ -90,6 +99,7 @@ class Page(models.Model):
     title = models.CharField(max_length=200)
     page_title = models.CharField(blank=True, max_length=200, help_text=("Use the Page Title if you want the Title of the page to be different than the Title. For Example... Title: About. Page Title: About Our Company."))
     slug = models.CharField(max_length=100)
+    template = models.ForeignKey(Template)
     page_type = models.ForeignKey(Type)
     parent = models.ForeignKey('self', blank=True, null=True, related_name='child')
     status = models.CharField(max_length=20, choices=STATUS)
