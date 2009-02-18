@@ -99,7 +99,7 @@ class Page(models.Model):
     title = models.CharField(max_length=200)
     page_title = models.CharField(blank=True, max_length=200, help_text=("Use the Page Title if you want the Title of the page to be different than the Title. For Example... Title: About. Page Title: About Our Company."))
     slug = models.CharField(max_length=100)
-    template = models.ForeignKey(Template)
+    template = models.ForeignKey(Template, blank=True, null=True)
     page_type = models.ForeignKey(Type)
     parent = models.ForeignKey('self', blank=True, null=True, related_name='child')
     status = models.CharField(max_length=20, choices=STATUS)
