@@ -33,6 +33,7 @@ class Post(models.Model):
     author = models.ForeignKey(User)
     similar_entries = models.ManyToManyField('self', blank=True, related_name='similar')
     enable_comments = models.BooleanField(default=False)
+    close_comments = models.BooleanField(default=False)
     tags = TagField()
     
     objects = models.Manager() # The default manager.
