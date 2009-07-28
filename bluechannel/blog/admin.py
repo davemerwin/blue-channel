@@ -1,5 +1,5 @@
 from django.contrib import admin
-from blog.models import Post
+from bluechannel.blog.models import Post
 
 class PostAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ('title',)}

@@ -89,12 +89,12 @@ INSTALLED_APPS = (
     
     # External Apps
     # From Blue Channel http://github.com/davemerwin/blue-channel/tree/master
-    'media',
-    'customers',
-    'page',
-    'blog',
-    'demo',
-    'categories',
+    'bluechannel.media',
+    'bluechannel.customers',
+    'bluechannel.page',
+    'bluechannel.blog',
+    'bluechannel.demo',
+    'bluechannel.categories',
     
     
     #External Apps

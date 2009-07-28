@@ -1,5 +1,5 @@
 from django.conf.urls.defaults import *
-from blog.models import Post
+from bluechannel.blog.models import Post
 
 list_dict = {
     'queryset': Post.objects.filter(status='publish'),

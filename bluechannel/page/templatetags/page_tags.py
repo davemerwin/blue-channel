@@ -1,5 +1,5 @@
 from django import template
-from page.models import Page, Highlight
+from bluechannel.page.models import Page, Highlight
 
 register = template.Library()
 

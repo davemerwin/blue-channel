@@ -2,7 +2,7 @@ from datetime import datetime
 from tagging.fields import TagField
 from django.db import models
 from django.contrib.auth.models import User
-from page.models import Page
+from bluechannel.page.models import Page
 
 # Create your models here.
 class Step(models.Model):

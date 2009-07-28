@@ -1,5 +1,5 @@
 from django.contrib import admin
-from media.models import Type, Media
+from bluechannel.media.models import Type, Media
 
 
 class TypeAdmin(admin.ModelAdmin):

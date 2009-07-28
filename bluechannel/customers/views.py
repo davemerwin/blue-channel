@@ -1,6 +1,6 @@
 from django.forms import ModelForm
 from django.shortcuts import render_to_response
-from customers.models import CustomerForm
+from bluechannel.customers.models import CustomerForm
 from django.template import Context, Template, RequestContext
 from django.http import Http404, HttpResponseRedirect
 from django.core.mail import send_mail

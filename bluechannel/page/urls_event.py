@@ -1,6 +1,6 @@
 from django.conf.urls.defaults import *
 from django.views.generic.list_detail import object_detail, object_list
-from page.models import Event
+from bluechannel.page.models import Event
 
 event_dict = {
     'queryset': Event.objects.order_by('name'),

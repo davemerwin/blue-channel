@@ -1,5 +1,5 @@
 from django.contrib import admin
-from customers.models import Customer
+from bluechannel.customers.models import Customer
 
 class CustomerAdmin(admin.ModelAdmin):
     list_display = ('user', 'approved', 'created_at','updated_at',)

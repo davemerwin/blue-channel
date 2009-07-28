@@ -1,5 +1,5 @@
 from django.contrib import admin
-from page.models import Highlight, Type, Event, Page
+from bluechannel.page.models import Highlight, Type, Event, Page
 
 class HighlightAdmin(admin.ModelAdmin):
     save_on_top = True
