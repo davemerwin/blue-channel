@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='Blue Channel CMS',
-    version='0.1'
+    version='0.1',
     description='A content management system developed in Django, jQuery and 960.',
     long_description='',
     # Get more strings from http://www.python.org/pypi?:action=list_classifiers
