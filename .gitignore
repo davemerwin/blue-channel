@@ -3,3 +3,4 @@
 *~
 .svn
 local_settings.py
+bluechannel/db

@@ -19,7 +19,7 @@ class Highlight(models.Model):
     content = models.TextField(blank=True)
     status = models.CharField(max_length=20, choices=STATUS)
     created_at = models.DateTimeField(_('created at'), default=datetime.now)
-    updated_at = models.DateTimeField(_('updated at'))
+    updated_at = models.DateTimeField(_('updated at'), blank=True)
     tags = TagField()
     
     def __unicode__(self):
@@ -40,7 +40,7 @@ class Type(models.Model):
     name = models.CharField(max_length=100)
     description = models.TextField(blank=True)
     created_at = models.DateTimeField(_('created at'), default=datetime.now)
-    updated_at = models.DateTimeField(_('updated at'))
+    updated_at = models.DateTimeField(_('updated at'), blank=True)
     
     class Meta:
         verbose_name = ('Type')
@@ -63,7 +63,7 @@ class Event(models.Model):
     description = models.TextField('Content', blank=True)
     summary = models.TextField(blank=True)
     created_at = models.DateTimeField(_('created at'), default=datetime.now)
-    updated_at = models.DateTimeField(_('updated at'))
+    updated_at = models.DateTimeField(_('updated at'), blank=True)
     slug = models.CharField(max_length=100)
     tags = TagField()
     enable_comments = models.BooleanField(default=True)
@@ -74,6 +74,15 @@ class Event(models.Model):
     def save(self, force_insert=False, force_update=False):
         self.updated_at = datetime.now()
         super(Event, self).save(force_insert, force_update)
+
+class Template(models.Model):
+    """A template model with sample template image"""
+    name = models.CharField(max_length=200)
+    description = models.TextField(blank=True)
+    image = models.ImageField(upload_to='template_images', max_length=200, blank=True)
+
+    def __unicode__(self):
+        return self.name
 
 # Published Page Manager
 class PublishedPageManager(models.Manager):
@@ -90,6 +99,7 @@ class Page(models.Model):
     title = models.CharField(max_length=200)
     page_title = models.CharField(blank=True, max_length=200, help_text=("Use the Page Title if you want the Title of the page to be different than the Title. For Example... Title: About. Page Title: About Our Company."))
     slug = models.CharField(max_length=100)
+    template = models.ForeignKey(Template)
     page_type = models.ForeignKey(Type)
     parent = models.ForeignKey('self', blank=True, null=True, related_name='child')
     status = models.CharField(max_length=20, choices=STATUS)
@@ -99,7 +109,7 @@ class Page(models.Model):
     event = models.ManyToManyField(Event, blank=True)
     media = models.ManyToManyField(Media, blank=True)
     created_at = models.DateTimeField(_('created at'), default=datetime.now)
-    updated_at = models.DateTimeField(_('updated at'))
+    updated_at = models.DateTimeField(_('updated at'), blank=True)
     author = models.ForeignKey(User)
     similar_pages = models.ManyToManyField('self', blank=True, related_name='similar')
     enable_comments = models.BooleanField(default=False)
